@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>发布需求 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">发布探测需求</div>
+    <div class="navbar-action">保存</div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">基本信息</div>
+        
+        <div class="form-group">
+          <label class="form-label">项目名称</label>
+          <input type="text" class="form-input" placeholder="请输入项目名称">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">项目地点</label>
+          <select class="form-select">
+            <option>请选择项目地点</option>
+            <option>北京市朝阳区</option>
+            <option>北京市海淀区</option>
+            <option>北京市丰台区</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">探测类型</label>
+          <select class="form-select">
+            <option>请选择探测类型</option>
+            <option>地下管线探测</option>
+            <option>地质勘察</option>
+            <option>工程测量</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">项目描述</label>
+          <textarea class="form-textarea" placeholder="详细描述项目需求..."></textarea>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">预算与时间</div>
+        
+        <div class="form-group">
+          <label class="form-label">预算金额（万元）</label>
+          <input type="number" class="form-input" placeholder="请输入预算">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">开始时间</label>
+          <input type="date" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">结束时间</label>
+          <input type="date" class="form-input">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">资质要求</div>
+        
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="cert1" checked>
+            <label for="cert1" class="checkbox-label">需要相关资质证书</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cert2" checked>
+            <label for="cert2" class="checkbox-label">需要安全生产许可</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cert3">
+            <label for="cert3" class="checkbox-label">需要测绘资质</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">投标设置</div>
+        
+        <div class="form-group">
+          <label class="form-label">投标截止时间</label>
+          <input type="datetime-local" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">最低保证金（元）</label>
+          <input type="number" class="form-input" placeholder="5000" value="5000">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">附件上传</div>
+        
+        <div class="upload-list">
+          <div class="upload-item">
+            <span>📷</span>
+          </div>
+          <div class="upload-item">+</div>
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <button class="btn btn-primary" onclick="alert('需求发布成功！');window.location.href='my-needs.html'">发布需求</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

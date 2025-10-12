@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>评价管理 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">评价管理</div>
+    <div class="navbar-action">搜索</div>
+  </div>
+
+  <div class="page">
+    <div class="page-content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">总评价数</div>
+          <div class="stat-value">1,258</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">平均评分</div>
+          <div class="stat-value">4.6⭐</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">好评率</div>
+          <div class="stat-value">96%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">待处理投诉</div>
+          <div class="stat-value" style="color: var(--error-color);">3</div>
+        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active">全部</button>
+        <button class="filter-tab">⭐⭐⭐⭐⭐</button>
+        <button class="filter-tab">⭐⭐⭐⭐</button>
+        <button class="filter-tab">⭐⭐⭐</button>
+        <button class="filter-tab">差评</button>
+        <button class="filter-tab">投诉</button>
+      </div>
+
+      <!-- 五星好评 -->
+      <div class="card">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="rating" style="margin-bottom: 4px;">
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+            </div>
+            <div class="text-small">2025-10-11 15:30</div>
+          </div>
+          <div class="tag tag-success">已完成</div>
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>项目：</strong>XX地下管线探测项目 (P2025080005)
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>评价方：</strong>XX建设集团（甲方） → XX探测公司（乙方）
+        </div>
+        <div class="divider"></div>
+        <div style="background: var(--bg-page); padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+          <div style="font-size: 14px; line-height: 1.6; color: var(--text-primary);">
+            工作质量优秀，按时完成，团队专业，沟通顺畅，值得推荐！探测数据准确，报告详实，非常满意。
+          </div>
+        </div>
+        <div class="project-info">
+          <strong>标签：</strong>
+          <span class="tag tag-success">质量优秀</span>
+          <span class="tag tag-success">按时完工</span>
+          <span class="tag tag-success">专业靠谱</span>
+          <span class="tag tag-success">值得推荐</span>
+        </div>
+      </div>
+
+      <!-- 双向互评 -->
+      <div class="card">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="rating" style="margin-bottom: 4px;">
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+            </div>
+            <div class="text-small">2025-10-10 18:20</div>
+          </div>
+          <div class="tag tag-success">双向好评</div>
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>项目：</strong>XX测绘项目 (P2025070020)
+        </div>
+        
+        <!-- 甲方评价乙方 -->
+        <div style="background: #EBF5FF; padding: 12px; border-radius: 6px; border-left: 4px solid var(--primary-color); margin-bottom: 8px;">
+          <div style="font-size: 12px; color: var(--primary-color); font-weight: bold; margin-bottom: 4px;">
+            🏢 甲方评价乙方 → ⭐⭐⭐⭐⭐
+          </div>
+          <div style="font-size: 13px; color: var(--text-primary);">
+            XX开发公司：服务专业，质量可靠，期待下次合作。
+          </div>
+        </div>
+
+        <!-- 乙方评价甲方 -->
+        <div style="background: #FEF3E8; padding: 12px; border-radius: 6px; border-left: 4px solid var(--secondary-color);">
+          <div style="font-size: 12px; color: var(--secondary-color); font-weight: bold; margin-bottom: 4px;">
+            👷 乙方评价甲方 → ⭐⭐⭐⭐⭐
+          </div>
+          <div style="font-size: 13px; color: var(--text-primary);">
+            XX测绘公司：甲方配合度高，付款及时，沟通顺畅，期待继续合作。
+          </div>
+        </div>
+      </div>
+
+      <!-- 低分评价 -->
+      <div class="card" style="border-left: 4px solid var(--warning-color);">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="rating" style="margin-bottom: 4px;">
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+              <span class="star">⭐</span>
+            </div>
+            <div class="text-small">2025-10-09 16:45</div>
+          </div>
+          <div class="tag tag-warning">⚠️ 需关注</div>
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>项目：</strong>XX勘察项目 (P2025090015)
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>评价方：</strong>XX房地产公司（甲方） → XX勘察队（乙方）
+        </div>
+        <div class="divider"></div>
+        <div style="background: var(--bg-page); padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+          <div style="font-size: 14px; line-height: 1.6; color: var(--text-primary);">
+            进度稍有延误，但最终完成质量尚可。希望下次能改进时间管理。
+          </div>
+        </div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-secondary" style="flex: 1;">查看详情</button>
+          <button class="btn btn-small btn-primary">平台介入</button>
+        </div>
+      </div>
+
+      <!-- 投诉处理 -->
+      <div class="card" style="border: 2px solid var(--error-color);">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div style="color: var(--error-color); font-weight: bold; margin-bottom: 4px;">🚨 投诉</div>
+            <div class="text-small">2025-10-08 10:20</div>
+          </div>
+          <div class="tag" style="background: rgba(239, 68, 68, 0.1); color: var(--error-color);">⏳ 待处理</div>
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>项目：</strong>XX项目 (P2025080030)
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>投诉方：</strong>XX公司（甲方）
+        </div>
+        <div class="project-info" style="margin-bottom: 8px;">
+          <strong>被投诉方：</strong>XX施工队（乙方）
+        </div>
+        <div class="divider"></div>
+        <div style="background: #FEE2E2; padding: 12px; border-radius: 6px; margin-bottom: 12px;">
+          <div style="font-size: 14px; line-height: 1.6; color: var(--text-primary);">
+            <strong>投诉内容：</strong><br>
+            乙方施工质量不达标，多次要求整改未改善，影响项目进度。要求平台介入协调。
+          </div>
+        </div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-primary" style="flex: 1;">立即处理</button>
+          <button class="btn btn-small btn-secondary">联系双方</button>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 16px; color: var(--text-secondary);">
+        显示最近20条评价
+        <div style="margin-top: 8px;">
+          <button class="btn btn-small btn-secondary">查看更多</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>设置 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: var(--text-disabled);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .toggle-switch.active {
+      background: var(--success-color);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: left 0.3s;
+    }
+    .toggle-switch.active::after {
+      left: 22px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">设置</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <div class="section-title">账号与安全</div>
+
+      <div class="card" style="padding: 0;">
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">手机号</div>
+            <div class="list-item-desc">138****5678</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">修改密码</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">实名认证</div>
+            <div class="list-item-desc" style="color: var(--success-color);">已认证</div>
+          </div>
+          <div style="color: var(--success-color);">✅</div>
+        </div>
+      </div>
+
+      <div class="section-title">通知设置</div>
+
+      <div class="card" style="padding: 0;">
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">项目消息通知</div>
+          </div>
+          <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">系统通知</div>
+          </div>
+          <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">资金变动提醒</div>
+          </div>
+          <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">评价提醒</div>
+          </div>
+          <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
+        </div>
+      </div>
+
+      <div class="section-title">隐私设置</div>
+
+      <div class="card" style="padding: 0;">
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">允许查看我的资料</div>
+          </div>
+          <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">显示手机号</div>
+          </div>
+          <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
+        </div>
+      </div>
+
+      <div class="section-title">通用</div>
+
+      <div class="card" style="padding: 0;">
+        <a href="about.html" class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">关于我们</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </a>
+
+        <a href="agreement.html" class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">用户协议</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </a>
+
+        <a href="privacy.html" class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">隐私政策</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </a>
+
+        <a href="feedback.html" class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">意见反馈</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </a>
+
+        <div class="list-item" onclick="alert('缓存已清除')">
+          <div class="list-item-content">
+            <div class="list-item-title">清除缓存</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">当前版本</div>
+          </div>
+          <div class="text-small">v1.0.0</div>
+        </div>
+      </div>
+
+      <div style="padding: 32px 0;">
+        <button class="btn btn-primary" style="background: white; color: var(--error-color); border: 1px solid var(--error-color);" onclick="if(confirm('确定要退出登录吗？')){alert('已退出登录'); window.location.href='../index.html';}">退出登录</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

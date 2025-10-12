@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>平台管理后台 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+    .stats-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat-card .number {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 8px 0;
+    }
+    .stat-card .label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .stat-card .change {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .stat-card .change.up {
+      color: var(--success-color);
+    }
+    .stat-card .change.down {
+      color: var(--error-color);
+    }
+    .chart-placeholder {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="window.location.href='../index.html'">←</div>
+    <div class="navbar-title">平台管理后台</div>
+    <div class="navbar-action" onclick="window.location.href='../common/messages.html'">🔔</div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 欢迎区域 -->
+      <div class="welcome-section">
+        <div class="welcome-text">👋 您好，平台管理员</div>
+        <div class="welcome-stats">系统运行正常 | 今日活跃用户：158</div>
+      </div>
+
+      <!-- 核心数据统计 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📊 核心数据概览</div>
+        <div class="stats-overview">
+          <div class="stat-card">
+            <div class="label">总用户数</div>
+            <div class="number">1,258</div>
+            <div class="change up">↑ 12% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">总项目数</div>
+            <div class="number">356</div>
+            <div class="change up">↑ 8% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">进行中项目</div>
+            <div class="number">89</div>
+            <div class="change">— 持平</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">交易总额</div>
+            <div class="number" style="font-size: 24px;">3,580万</div>
+            <div class="change up">↑ 15% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">平台佣金收入</div>
+            <div class="number" style="font-size: 24px;">178.9万</div>
+            <div class="change up">↑ 15% 较上月</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">待审核认证</div>
+            <div class="number" style="color: var(--warning-color);">23</div>
+            <div class="change">需要处理</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快捷功能入口 -->
+      <div class="grid-menu">
+        <a href="users.html" class="grid-item">
+          <div class="grid-icon">👥</div>
+          <div class="grid-text">用户管理</div>
+        </a>
+        <a href="projects.html" class="grid-item">
+          <div class="grid-icon">📋</div>
+          <div class="grid-text">项目监控</div>
+        </a>
+        <a href="funds.html" class="grid-item">
+          <div class="grid-icon">💰</div>
+          <div class="grid-text">资金管理</div>
+        </a>
+        <a href="audit.html" class="grid-item">
+          <div class="grid-icon">✅</div>
+          <div class="grid-text">认证审核</div>
+        </a>
+        <a href="reports.html" class="grid-item">
+          <div class="grid-icon">📊</div>
+          <div class="grid-text">数据报表</div>
+        </a>
+        <a href="ratings.html" class="grid-item">
+          <div class="grid-icon">⭐</div>
+          <div class="grid-text">评价管理</div>
+        </a>
+        <a href="../common/settings.html" class="grid-item">
+          <div class="grid-icon">⚙️</div>
+          <div class="grid-text">系统设置</div>
+        </a>
+        <a href="../common/help.html" class="grid-item">
+          <div class="grid-icon">❓</div>
+          <div class="grid-text">帮助中心</div>
+        </a>
+      </div>
+
+      <!-- 待办事项 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📌 待办事项</div>
+          <a href="audit.html" class="card-extra" style="color: var(--primary-color); text-decoration: none;">查看全部 ›</a>
+        </div>
+
+        <div class="list-item" onclick="window.location.href='audit.html'" style="cursor: pointer;">
+          <div class="list-item-content">
+            <div class="list-item-title">🔴 待审核企业认证</div>
+            <div class="list-item-desc">23个企业等待认证审核</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+
+        <div class="list-item" onclick="window.location.href='projects.html'" style="cursor: pointer;">
+          <div class="list-item-content">
+            <div class="list-item-title">🟡 项目异常监控</div>
+            <div class="list-item-desc">3个项目进度超期需关注</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+
+        <div class="list-item" onclick="window.location.href='funds.html'" style="cursor: pointer;">
+          <div class="list-item-content">
+            <div class="list-item-title">🟢 待分佣项目</div>
+            <div class="list-item-desc">5个项目完成，待自动分佣</div>
+          </div>
+          <div class="list-item-arrow">›</div>
+        </div>
+      </div>
+
+      <!-- 今日交易趋势 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📈 今日交易趋势</div>
+        <div class="chart-placeholder">
+          [交易趋势图表占位]<br>
+          实际开发时可接入ECharts等图表库
+        </div>
+      </div>
+
+      <!-- 最近活动 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">🔔 最近活动</div>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">5分钟前</div>
+              <div class="timeline-desc">XX建设集团 发布了新项目"XX地下管线探测"</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">15分钟前</div>
+              <div class="timeline-desc">XX探测公司 提交投标，项目金额45万</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">30分钟前</div>
+              <div class="timeline-desc">XX项目 验收完成，平台收入佣金2.25万</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">1小时前</div>
+              <div class="timeline-desc">新用户注册：XX工程队</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2小时前</div>
+              <div class="timeline-desc">XX企业 完成实名认证</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏（管理端） -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item active">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+

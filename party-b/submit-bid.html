@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>提交投标 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">提交投标</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 项目信息 -->
+      <div class="card">
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info" style="margin-top: 8px;">甲方预算：50万</div>
+        <div class="project-info">投标保证金：5000元</div>
+      </div>
+
+      <!-- 报价信息 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">报价信息</div>
+        
+        <div class="form-group">
+          <label class="form-label">投标报价（万元）</label>
+          <input type="number" class="form-input" placeholder="45" value="45">
+        </div>
+
+        <div style="background: var(--bg-page); padding: 12px; border-radius: 6px; margin-top: 8px;">
+          <div class="text-small" style="color: var(--text-secondary);">💡 参考：当前最低报价 43万</div>
+        </div>
+      </div>
+
+      <!-- 工期承诺 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">工期承诺</div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">计划开工</label>
+            <input type="date" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">计划完工</label>
+            <input type="date" class="form-input">
+          </div>
+        </div>
+      </div>
+
+      <!-- 施工方案说明 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">施工方案说明</div>
+        <textarea class="form-textarea" placeholder="请简要说明施工方案、工期安排、人员配置等"></textarea>
+      </div>
+
+      <!-- 资质证明 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">资质证明（必填）</div>
+        
+        <div style="margin-bottom: 12px;">
+          <div class="list-item" style="padding: 12px; background: var(--bg-page); border-radius: 6px;">
+            <div class="list-item-content">
+              <div class="list-item-title">✅ 营业执照.jpg</div>
+              <div class="list-item-desc">已上传</div>
+            </div>
+            <div style="color: var(--error-color); cursor: pointer;">删除</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <div class="list-item" style="padding: 12px; background: var(--bg-page); border-radius: 6px;">
+            <div class="list-item-content">
+              <div class="list-item-title">✅ 探测资质证书.jpg</div>
+              <div class="list-item-desc">已上传</div>
+            </div>
+            <div style="color: var(--error-color); cursor: pointer;">删除</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <div class="list-item" style="padding: 12px; background: var(--bg-page); border-radius: 6px;">
+            <div class="list-item-content">
+              <div class="list-item-title">✅ 安全生产许可证.jpg</div>
+              <div class="list-item-desc">已上传</div>
+            </div>
+            <div style="color: var(--error-color); cursor: pointer;">删除</div>
+          </div>
+        </div>
+
+        <div class="upload-list">
+          <div class="upload-item">+<br><span style="font-size: 12px;">继续上传</span></div>
+        </div>
+      </div>
+
+      <!-- 业绩证明 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">业绩证明（选填）</div>
+        
+        <div style="margin-bottom: 12px;">
+          <div class="list-item" style="padding: 12px; background: var(--bg-page); border-radius: 6px;">
+            <div class="list-item-content">
+              <div class="list-item-title">📄 以往项目合同.pdf</div>
+            </div>
+            <div style="color: var(--error-color); cursor: pointer;">删除</div>
+          </div>
+        </div>
+
+        <div class="upload-list">
+          <div class="upload-item">+<br><span style="font-size: 12px;">继续上传</span></div>
+        </div>
+      </div>
+
+      <!-- 保证金支付 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">保证金支付</div>
+        
+        <div class="project-info">需支付保证金：5000元</div>
+        
+        <div style="margin-top: 12px;">
+          <div class="form-label">支付方式</div>
+          <div style="display: flex; gap: 16px; margin-top: 8px;">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+              <input type="radio" name="payment" value="wechat" style="margin-right: 8px;" checked>
+              <span>微信支付</span>
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer;">
+              <input type="radio" name="payment" value="bank" style="margin-right: 8px;">
+              <span>对公转账</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 承诺条款 -->
+      <div class="card">
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="agree1" checked>
+            <label for="agree1" class="checkbox-label">我已阅读并同意《投标须知》</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="agree2" checked>
+            <label for="agree2" class="checkbox-label">保证提供的资质信息真实有效</label>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <button class="btn btn-primary" onclick="submitBid()">提交投标</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitBid() {
+      if (confirm('确认提交投标？\n\n将自动扣除保证金 5000元')) {
+        alert('投标提交成功！\n\n请等待甲方开标，您可以在"我的项目"中查看投标状态。');
+        window.location.href = 'my-projects.html';
+      }
+    }
+  </script>
+</body>
+</html>
+

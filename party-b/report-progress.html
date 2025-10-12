@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>上报进度 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">上报进度</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 项目信息 -->
+      <div class="card">
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info" style="margin-top: 8px;">当前阶段：第二阶段作业</div>
+        <div class="project-info">上次更新：2025-10-05</div>
+      </div>
+
+      <!-- 进度更新 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">进度更新</div>
+        
+        <div class="form-group">
+          <label class="form-label">当前完成度（%）</label>
+          <input type="range" min="0" max="100" value="60" class="form-input" style="width: 100%;" oninput="document.getElementById('progress-value').textContent = this.value + '%'">
+          <div style="text-align: center; font-size: 24px; font-weight: bold; color: var(--primary-color); margin-top: 8px;" id="progress-value">60%</div>
+        </div>
+      </div>
+
+      <!-- 工作内容说明 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">工作内容说明</div>
+        <textarea class="form-textarea" placeholder="请描述本次更新的工作内容"></textarea>
+      </div>
+
+      <!-- 现场照片上传 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">现场照片上传</div>
+        <div class="upload-list">
+          <div class="upload-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect fill='%23E5E7EB' width='80' height='80'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236B7280' font-size='12'%3E图片%3C/text%3E%3C/svg%3E" alt="现场照片">
+          </div>
+          <div class="upload-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect fill='%23E5E7EB' width='80' height='80'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236B7280' font-size='12'%3E图片%3C/text%3E%3C/svg%3E" alt="现场照片">
+          </div>
+          <div class="upload-item">+</div>
+        </div>
+      </div>
+
+      <!-- 工作人员 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">工作人员</div>
+        <div class="form-group">
+          <label class="form-label">今日在场人数</label>
+          <input type="number" class="form-input" placeholder="8" value="8">
+        </div>
+      </div>
+
+      <!-- 遇到的问题 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">遇到的问题（选填）</div>
+        <textarea class="form-textarea" placeholder="如有问题请描述"></textarea>
+      </div>
+
+      <!-- 预计下次更新时间 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">预计下次更新时间</div>
+        <input type="date" class="form-input">
+      </div>
+
+      <!-- 是否申请阶段验收 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">是否申请阶段验收？</div>
+        <div style="display: flex; gap: 16px; justify-content: center;">
+          <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="radio" name="acceptance" value="yes" style="margin-right: 8px;">
+            <span>是，申请验收</span>
+          </label>
+          <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="radio" name="acceptance" value="no" style="margin-right: 8px;" checked>
+            <span>否，继续施工</span>
+          </label>
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <button class="btn btn-primary" onclick="submitProgress()">提交进度更新</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitProgress() {
+      alert('进度更新成功！已通知甲方查看。');
+      window.location.href = 'my-projects.html';
+    }
+  </script>
+</body>
+</html>
+

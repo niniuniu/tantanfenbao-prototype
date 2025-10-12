@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>探测分包撮合平台 - 客户预览版</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+    .notice {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .notice h2 {
+      color: #1E3A8A;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+    .notice p {
+      color: #6B7280;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .notice .highlight {
+      color: #F59E0B;
+      font-weight: bold;
+    }
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      color: #1E3A8A;
+      margin-bottom: 20px;
+      font-size: 24px;
+      border-bottom: 2px solid #F59E0B;
+      padding-bottom: 8px;
+    }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .link-card {
+      background: white;
+      border: 2px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 16px;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: block;
+    }
+    .link-card:hover {
+      border-color: #1E3A8A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(30, 58, 138, 0.2);
+    }
+    .link-card .icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .link-card .title {
+      color: #1F2937;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .link-card .desc {
+      color: #6B7280;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .start-demo {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .start-demo a {
+      display: inline-block;
+      background: #F59E0B;
+      color: white;
+      padding: 20px 60px;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      transition: all 0.3s;
+    }
+    .start-demo a:hover {
+      background: #D97706;
+      transform: scale(1.05);
+    }
+    .footer {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 40px;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; }
+      .links { grid-template-columns: 1fr; }
+      .start-demo a { padding: 16px 40px; font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏗️ 探测分包撮合平台<br>交互原型演示</h1>
+
+    <div class="notice">
+      <h2>📱 客户查看说明</h2>
+      <p><span class="highlight">推荐使用方式：</span>点击下方"开始体验完整流程"按钮，选择甲方或乙方身份，体验完整业务流程。</p>
+      <p><span class="highlight">快速查看：</span>也可以直接点击下方任意功能页面快速预览。</p>
+      <p><span class="highlight">设备支持：</span>支持手机、平板、电脑浏览器访问，建议用手机查看效果更佳。</p>
+      <p><span class="highlight">操作提示：</span>页面间可以点击跳转，按钮可以点击交互，表单可以填写（演示用，不会保存数据）。</p>
+    </div>
+
+    <div class="start-demo">
+      <a href="index.html">🚀 开始体验完整流程</a>
+    </div>
+
+    <div class="section">
+      <h2>🏢 甲方端功能（发包方）</h2>
+      <div class="links">
+        <a href="party-a/home.html" class="link-card">
+          <div class="icon">🏠</div>
+          <div class="title">甲方首页</div>
+          <div class="desc">快捷入口、进行中的项目概览</div>
+        </a>
+        <a href="party-a/publish-need.html" class="link-card">
+          <div class="icon">📝</div>
+          <div class="title">发布探测需求</div>
+          <div class="desc">填写项目信息、设置投标规则</div>
+        </a>
+        <a href="party-a/my-needs.html" class="link-card">
+          <div class="icon">📋</div>
+          <div class="title">我的需求管理</div>
+          <div class="desc">查看和管理所有发布的需求</div>
+        </a>
+        <a href="party-a/bid-list.html" class="link-card">
+          <div class="icon">📊</div>
+          <div class="title">投标列表</div>
+          <div class="desc">查看所有投标方的详细信息</div>
+        </a>
+        <a href="party-a/bid-opening.html" class="link-card">
+          <div class="icon">⚖️</div>
+          <div class="title">在线开标</div>
+          <div class="desc">综合评分、选择中标方</div>
+        </a>
+        <a href="party-a/project-progress.html" class="link-card">
+          <div class="icon">📈</div>
+          <div class="title">项目进度监控</div>
+          <div class="desc">实时查看施工进度和时间轴</div>
+        </a>
+        <a href="party-a/acceptance-detail.html" class="link-card">
+          <div class="icon">✅</div>
+          <div class="title">项目验收</div>
+          <div class="desc">查看成果文件、验收评分、付款</div>
+        </a>
+        <a href="party-a/profile.html" class="link-card">
+          <div class="icon">👤</div>
+          <div class="title">甲方个人中心</div>
+          <div class="desc">统计数据、功能设置</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>👷 乙方端功能（包工头）</h2>
+      <div class="links">
+        <a href="party-b/home.html" class="link-card">
+          <div class="icon">🏠</div>
+          <div class="title">找活首页</div>
+          <div class="desc">浏览所有可投标的项目</div>
+        </a>
+        <a href="party-b/project-detail.html" class="link-card">
+          <div class="icon">📄</div>
+          <div class="title">项目详情</div>
+          <div class="desc">查看需求详情、甲方信息</div>
+        </a>
+        <a href="party-b/submit-bid.html" class="link-card">
+          <div class="icon">🎯</div>
+          <div class="title">提交投标</div>
+          <div class="desc">填写报价、上传资质证明</div>
+        </a>
+        <a href="party-b/my-projects.html" class="link-card">
+          <div class="icon">📋</div>
+          <div class="title">我的项目</div>
+          <div class="desc">管理投标和进行中的项目</div>
+        </a>
+        <a href="party-b/report-progress.html" class="link-card">
+          <div class="icon">📊</div>
+          <div class="title">上报进度</div>
+          <div class="desc">更新施工进度、上传现场照片</div>
+        </a>
+        <a href="party-b/qualifications.html" class="link-card">
+          <div class="icon">🎖️</div>
+          <div class="title">资质管理</div>
+          <div class="desc">管理企业资质证书</div>
+        </a>
+        <a href="party-b/profile.html" class="link-card">
+          <div class="icon">👤</div>
+          <div class="title">乙方个人中心</div>
+          <div class="desc">数据统计、收入管理</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>⚙️ 平台管理端功能</h2>
+      <div class="links">
+        <a href="platform/home.html" class="link-card">
+          <div class="icon">🏠</div>
+          <div class="title">平台管理首页</div>
+          <div class="desc">总览数据、快捷入口</div>
+        </a>
+        <a href="platform/users.html" class="link-card">
+          <div class="icon">👥</div>
+          <div class="title">用户管理</div>
+          <div class="desc">甲方、乙方用户审核管理</div>
+        </a>
+        <a href="platform/projects.html" class="link-card">
+          <div class="icon">📋</div>
+          <div class="title">项目监控</div>
+          <div class="desc">所有项目实时状态监控</div>
+        </a>
+        <a href="platform/funds.html" class="link-card">
+          <div class="icon">💰</div>
+          <div class="title">资金管理</div>
+          <div class="desc">托管资金、自动分佣</div>
+        </a>
+        <a href="platform/audit.html" class="link-card">
+          <div class="icon">✅</div>
+          <div class="title">认证审核</div>
+          <div class="desc">企业资质审核</div>
+        </a>
+        <a href="platform/reports.html" class="link-card">
+          <div class="icon">📊</div>
+          <div class="title">数据报表</div>
+          <div class="desc">统计分析、报表生成</div>
+        </a>
+        <a href="platform/ratings.html" class="link-card">
+          <div class="icon">⭐</div>
+          <div class="title">评价管理</div>
+          <div class="desc">双向评价、投诉处理</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔧 通用功能</h2>
+      <div class="links">
+        <a href="common/messages.html" class="link-card">
+          <div class="icon">💬</div>
+          <div class="title">消息中心</div>
+          <div class="desc">系统通知、项目消息、私信</div>
+        </a>
+        <a href="common/chat.html" class="link-card">
+          <div class="icon">💭</div>
+          <div class="title">聊天对话</div>
+          <div class="desc">与甲方/乙方即时沟通</div>
+        </a>
+        <a href="common/contracts.html" class="link-card">
+          <div class="icon">📜</div>
+          <div class="title">合同管理</div>
+          <div class="desc">查看电子合同、付款记录</div>
+        </a>
+        <a href="common/settings.html" class="link-card">
+          <div class="icon">⚙️</div>
+          <div class="title">系统设置</div>
+          <div class="desc">账号安全、通知设置、隐私</div>
+        </a>
+        <a href="common/help.html" class="link-card">
+          <div class="icon">❓</div>
+          <div class="title">帮助中心</div>
+          <div class="desc">新手指南、常见问题</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="notice">
+      <h2>💡 重要说明</h2>
+      <p>1. 这是<span class="highlight">功能演示原型</span>，用于展示完整的业务流程和功能布局。</p>
+      <p>2. 所有数据都是<span class="highlight">示例数据</span>，表单提交不会真正保存。</p>
+      <p>3. 页面设计符合微信小程序规范，<span class="highlight">支持手机浏览器访问</span>。</p>
+      <p>4. 请重点关注：功能完整性、业务流程合理性、页面布局清晰度。</p>
+      <p>5. 如有任何修改意见或建议，请及时反馈，我们将快速调整。</p>
+    </div>
+
+    <div class="footer">
+      <p>探测分包撮合平台 - 交互原型演示</p>
+      <p>版本：v1.0.0 | 创建日期：2025-10-12</p>
+    </div>
+  </div>
+</body>
+</html>
+

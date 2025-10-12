@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>探测分包撮合平台</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .welcome-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    }
+    .logo-section {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .logo-icon {
+      font-size: 80px;
+      margin-bottom: 16px;
+    }
+    .logo-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .logo-subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .role-selection {
+      width: 100%;
+    }
+    .role-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .role-card:active {
+      transform: scale(0.98);
+    }
+    .role-icon {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .role-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .role-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-page">
+    <div class="logo-section">
+      <div class="logo-icon">🏗️</div>
+      <div class="logo-title">探测分包撮合平台</div>
+      <div class="logo-subtitle">专业 · 高效 · 可信赖</div>
+    </div>
+
+    <div class="role-selection">
+      <a href="party-a/home.html" class="role-card">
+        <div class="role-icon">🏢</div>
+        <div class="role-title">我是甲方（发包方）</div>
+        <div class="role-desc">发布探测需求、选择承包方</div>
+      </a>
+
+      <a href="party-b/home.html" class="role-card">
+        <div class="role-icon">👷</div>
+        <div class="role-title">我是乙方（包工头）</div>
+        <div class="role-desc">查找项目、投标接活</div>
+      </a>
+
+      <a href="platform/home.html" class="role-card">
+        <div class="role-icon">⚙️</div>
+        <div class="role-title">平台管理后台</div>
+        <div class="role-desc">用户管理、项目监控、数据报表</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+

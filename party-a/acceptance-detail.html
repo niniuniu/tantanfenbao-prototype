@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>项目验收 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">项目验收</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 项目信息 -->
+      <div class="card">
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info" style="margin-top: 8px;">中标方：XX探测公司</div>
+        <div class="project-info">合同金额：45万</div>
+        <div class="project-info">当前阶段：第二阶段验收</div>
+      </div>
+
+      <!-- 验收清单 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">验收清单</div>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="check1" checked disabled>
+            <label for="check1" class="checkbox-label">现场作业已完成</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="check2" checked disabled>
+            <label for="check2" class="checkbox-label">探测数据已提交</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="check3" checked disabled>
+            <label for="check3" class="checkbox-label">探测报告已提交</label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="check4">
+            <label for="check4" class="checkbox-label">现场整理完成</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 成果文件 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">成果文件</div>
+        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
+          <div class="list-item-content">
+            <div class="list-item-title">📄 探测技术报告.pdf</div>
+            <div class="list-item-desc">2.3 MB</div>
+          </div>
+          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
+        </div>
+        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
+          <div class="list-item-content">
+            <div class="list-item-title">📄 地下管线图纸.dwg</div>
+            <div class="list-item-desc">5.8 MB</div>
+          </div>
+          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
+        </div>
+        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
+          <div class="list-item-content">
+            <div class="list-item-title">📊 数据表格.xlsx</div>
+            <div class="list-item-desc">1.2 MB</div>
+          </div>
+          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
+        </div>
+        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
+          <div class="list-item-content">
+            <div class="list-item-title">📸 现场照片</div>
+            <div class="list-item-desc">12张</div>
+          </div>
+          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
+        </div>
+      </div>
+
+      <!-- 验收意见 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">验收意见</div>
+        <textarea class="form-textarea" placeholder="请填写验收意见"></textarea>
+      </div>
+
+      <!-- 质量评分 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">质量评分</div>
+        <div class="rating" style="justify-content: center; font-size: 32px;">
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+          <span class="star">⭐</span>
+        </div>
+        <div style="text-align: center; color: var(--text-secondary); margin-top: 8px;">点击星星进行评分</div>
+      </div>
+
+      <!-- 验收结果 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">验收结果</div>
+        <div style="display: flex; gap: 16px; justify-content: center;">
+          <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="radio" name="result" value="pass" style="margin-right: 8px;" checked>
+            <span>验收通过</span>
+          </label>
+          <label style="display: flex; align-items: center; cursor: pointer;">
+            <input type="radio" name="result" value="reject" style="margin-right: 8px;">
+            <span>需要整改</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 付款设置 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">付款设置（验收通过时）</div>
+        <div class="project-info">本次付款金额：22.5万（50%）</div>
+        <div class="project-info">剩余尾款：9万（20%）</div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <button class="btn btn-primary" onclick="submitAcceptance()">提交验收结果</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitAcceptance() {
+      const result = document.querySelector('input[name="result"]:checked').value;
+      if (result === 'pass') {
+        if (confirm('确认验收通过？\n\n将自动完成以下操作：\n1. 支付本阶段款项 22.5万\n2. 通知乙方\n3. 更新项目进度')) {
+          alert('验收成功！款项已支付。');
+          window.location.href = 'my-needs.html';
+        }
+      } else {
+        alert('已提交整改意见，通知乙方进行整改。');
+        window.location.href = 'my-needs.html';
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>用户管理 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">用户管理</div>
+    <div class="navbar-action">搜索</div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 统计卡片 -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">总用户数</div>
+          <div class="stat-value">1,258</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">甲方企业</div>
+          <div class="stat-value">385</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">乙方企业</div>
+          <div class="stat-value">873</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">今日新增</div>
+          <div class="stat-value">12</div>
+        </div>
+      </div>
+
+      <!-- 筛选标签 -->
+      <div class="filter-tabs">
+        <button class="filter-tab active">全部</button>
+        <button class="filter-tab">甲方</button>
+        <button class="filter-tab">乙方</button>
+        <button class="filter-tab">已认证</button>
+        <button class="filter-tab">待审核</button>
+        <button class="filter-tab">已禁用</button>
+      </div>
+
+      <!-- 用户列表 -->
+      <div class="card" style="padding: 0;">
+        <!-- 甲方用户 -->
+        <div class="list-item">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <div style="width: 40px; height: 40px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">🏢</div>
+            <div style="flex: 1;">
+              <div style="font-weight: bold; margin-bottom: 4px;">XX建设集团</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">
+                甲方 | UID: 10001 | 信用: ⭐⭐⭐⭐⭐ | <span style="color: var(--success-color);">✅已认证</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+                发包: 25个 | 支出: 980万 | 注册: 2024-05-15
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-small btn-secondary">查看详情</button>
+            <button class="btn btn-small btn-text" style="color: var(--error-color);">禁用</button>
+          </div>
+        </div>
+
+        <!-- 乙方用户 -->
+        <div class="list-item">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <div style="width: 40px; height: 40px; background: var(--secondary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">👷</div>
+            <div style="flex: 1;">
+              <div style="font-weight: bold; margin-bottom: 4px;">XX探测公司</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">
+                乙方 | UID: 20001 | 信用分: 95 | <span style="color: var(--success-color);">✅已认证</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+                接单: 18个 | 收入: 520万 | 注册: 2024-03-20
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-small btn-secondary">查看详情</button>
+            <button class="btn btn-small btn-text" style="color: var(--error-color);">禁用</button>
+          </div>
+        </div>
+
+        <!-- 待审核用户 -->
+        <div class="list-item">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <div style="width: 40px; height: 40px; background: var(--text-disabled); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">👷</div>
+            <div style="flex: 1;">
+              <div style="font-weight: bold; margin-bottom: 4px;">XX工程队</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">
+                乙方 | UID: 20125 | <span style="color: var(--warning-color);">⏳待审核</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+                已提交资质材料 | 注册: 2025-10-10
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-small btn-primary" onclick="window.location.href='audit.html'">去审核</button>
+            <button class="btn btn-small btn-text" style="color: var(--error-color);">拒绝</button>
+          </div>
+        </div>
+
+        <!-- 更多用户 -->
+        <div class="list-item">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <div style="width: 40px; height: 40px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">🏢</div>
+            <div style="flex: 1;">
+              <div style="font-weight: bold; margin-bottom: 4px;">XX开发公司</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">
+                甲方 | UID: 10025 | 信用: ⭐⭐⭐⭐ | <span style="color: var(--success-color);">✅已认证</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+                发包: 12个 | 支出: 580万 | 注册: 2024-08-01
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-small btn-secondary">查看详情</button>
+            <button class="btn btn-small btn-text" style="color: var(--error-color);">禁用</button>
+          </div>
+        </div>
+
+        <div class="list-item">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+            <div style="width: 40px; height: 40px; background: var(--secondary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">👷</div>
+            <div style="flex: 1;">
+              <div style="font-weight: bold; margin-bottom: 4px;">XX测绘公司</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">
+                乙方 | UID: 20045 | 信用分: 88 | <span style="color: var(--success-color);">✅已认证</span>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
+                接单: 15个 | 收入: 380万 | 注册: 2024-06-15
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-small btn-secondary">查看详情</button>
+            <button class="btn btn-small btn-text" style="color: var(--error-color);">禁用</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 16px; color: var(--text-secondary);">
+        显示 1-5 / 共1258条记录
+        <div style="margin-top: 12px;">
+          <button class="btn btn-small btn-secondary">上一页</button>
+          <span style="margin: 0 12px;">1 / 252</span>
+          <button class="btn btn-small btn-secondary">下一页</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item active">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+
