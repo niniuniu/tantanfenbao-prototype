@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>聊天 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .chat-container {
+      padding: 16px;
+      padding-bottom: 80px;
+    }
+    .message {
+      margin-bottom: 16px;
+      display: flex;
+      gap: 12px;
+    }
+    .message.mine {
+      flex-direction: row-reverse;
+    }
+    .message-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .message-content {
+      max-width: 70%;
+    }
+    .message-bubble {
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      word-wrap: break-word;
+    }
+    .message.mine .message-bubble {
+      background: var(--primary-color);
+      color: white;
+    }
+    .message-time {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .message.mine .message-time {
+      text-align: right;
+    }
+    .message-file {
+      background: var(--bg-page);
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .message.mine .message-file {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .chat-input {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 375px;
+      background: white;
+      border-top: 1px solid var(--border-color);
+      padding: 12px 16px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .chat-input input {
+      flex: 1;
+      height: 36px;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+    .chat-input input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    .chat-input-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .chat-input-send {
+      background: var(--primary-color);
+      color: white;
+      border-radius: 18px;
+      padding: 0 20px;
+      height: 36px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">XX探测公司</div>
+    <div class="navbar-action">...</div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="chat-container">
+      <!-- 对方消息 -->
+      <div class="message">
+        <div class="message-avatar">🏢</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            您好，关于项目的技术要求我想和您详细沟通一下
+          </div>
+          <div class="message-time">10:22</div>
+        </div>
+      </div>
+
+      <!-- 我的消息 -->
+      <div class="message mine">
+        <div class="message-avatar">👤</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            您好，可以详细说明一下具体的问题吗？
+          </div>
+          <div class="message-time">10:25</div>
+        </div>
+      </div>
+
+      <!-- 对方消息 -->
+      <div class="message">
+        <div class="message-avatar">🏢</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            具体是关于探测深度的要求，我们需要确保达到3米以下的探测精度
+          </div>
+          <div class="message-time">10:26</div>
+        </div>
+      </div>
+
+      <!-- 对方发送文件 -->
+      <div class="message">
+        <div class="message-avatar">🏢</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            这是我们的技术方案
+            <div class="message-file">
+              <span>📄</span>
+              <div style="flex: 1;">
+                <div style="font-size: 14px; color: var(--text-primary);">技术方案.pdf</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">2.3 MB</div>
+              </div>
+            </div>
+          </div>
+          <div class="message-time">10:26</div>
+        </div>
+      </div>
+
+      <!-- 我的消息 -->
+      <div class="message mine">
+        <div class="message-avatar">👤</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            好的，我看一下方案，稍后给您回复
+          </div>
+          <div class="message-time">10:28</div>
+        </div>
+      </div>
+
+      <!-- 对方消息 -->
+      <div class="message">
+        <div class="message-avatar">🏢</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            好的，期待您的回复
+          </div>
+          <div class="message-time">10:29</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 输入框 -->
+  <div class="chat-input">
+    <div class="chat-input-icon">📎</div>
+    <input type="text" placeholder="输入消息...">
+    <div class="chat-input-icon">🎤</div>
+    <button class="chat-input-send">发送</button>
+  </div>
+</body>
+</html>
+

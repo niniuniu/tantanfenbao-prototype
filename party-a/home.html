@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>甲方首页 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="window.location.href='../index.html'">←</div>
+    <div class="navbar-title">探测分包撮合平台</div>
+    <div class="navbar-action" onclick="window.location.href='../common/messages.html'">🔔 <span class="badge">3</span></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 欢迎区域 -->
+      <div class="welcome-section">
+        <div class="welcome-text">👋 您好，XX建设集团</div>
+        <div class="welcome-stats">当前进行中的项目：5个</div>
+      </div>
+
+      <!-- 快捷入口 -->
+      <div class="grid-menu">
+        <a href="publish-need.html" class="grid-item">
+          <div class="grid-icon">📝</div>
+          <div class="grid-text">发布需求</div>
+        </a>
+        <a href="statistics.html" class="grid-item">
+          <div class="grid-icon">📊</div>
+          <div class="grid-text">统计报表</div>
+        </a>
+        <a href="bid-management.html" class="grid-item">
+          <div class="grid-icon">⚖️</div>
+          <div class="grid-text">开标管理</div>
+        </a>
+        <a href="acceptance.html" class="grid-item">
+          <div class="grid-icon">✅</div>
+          <div class="grid-text">验收管理</div>
+        </a>
+      </div>
+
+      <!-- 进行中的项目 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📋 进行中的项目</div>
+          <a href="my-needs.html" class="card-extra" style="text-decoration: none; color: var(--primary-color);">查看全部 ›</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-name">XX地下管线探测项目</div>
+            <div class="status-dot pending"></div>
+          </div>
+          <div class="project-info">地点：XX市XX区 | 预算：50万</div>
+          <div class="project-info">状态：投标中 | 投标数：8</div>
+          <div class="project-info">截止时间：2025-10-20</div>
+          <div class="project-actions">
+            <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
+            <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-name">XX地质勘察项目</div>
+            <div class="status-dot progress"></div>
+          </div>
+          <div class="project-info">中标方：XX探测公司</div>
+          <div class="project-info">合同金额：45万 | 进度：60%</div>
+          <div class="project-actions">
+            <a href="project-progress.html" class="btn btn-small btn-secondary" style="flex: 1;">查看进度</a>
+            <a href="acceptance-detail.html" class="btn btn-small btn-primary">验收</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-name">XX探测项目</div>
+            <div class="status-dot completed"></div>
+          </div>
+          <div class="project-info">完成时间：2025-09-15</div>
+          <div class="project-info">评价：⭐⭐⭐⭐⭐</div>
+          <div class="project-actions">
+            <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item active">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="my-needs.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>我的需求</div>
+    </a>
+    <a href="../common/messages.html" class="tabbar-item">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+    <a href="profile.html" class="tabbar-item">
+      <div class="tabbar-icon">👤</div>
+      <div>我的</div>
+    </a>
+  </div>
+</body>
+</html>
+

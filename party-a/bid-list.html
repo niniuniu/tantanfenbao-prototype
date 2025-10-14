@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>投标列表 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">投标列表</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 项目信息 -->
+      <div class="card">
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info" style="margin-top: 8px;">预算：50万 | 投标数：8</div>
+        <div class="project-info">投标截止：2025-10-20 18:00</div>
+        <div class="project-info" style="color: var(--warning-color);">⏰ 距离截止：还剩2天5小时</div>
+      </div>
+
+      <!-- 投标列表 -->
+      <div class="section-title">投标列表（按报价排序）</div>
+
+      <!-- 最低报价 -->
+      <div class="project-card" style="border: 2px solid var(--secondary-color);">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="color: var(--secondary-color); font-weight: bold;">🏆 最低报价</div>
+        </div>
+        <div class="card-title">XX探测公司</div>
+        <div class="project-info" style="color: var(--error-color); font-size: 18px; font-weight: bold; margin: 8px 0;">报价：45万</div>
+        <div class="project-info">资质：⭐⭐⭐⭐⭐ | 信用分：95</div>
+        <div class="project-info">完成项目：23个 | 好评率：98%</div>
+        <div class="project-actions">
+          <a href="bid-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="../common/chat.html" class="btn btn-small btn-secondary">沟通</a>
+        </div>
+      </div>
+
+      <!-- 其他投标 -->
+      <div class="project-card">
+        <div class="card-title">XX工程队</div>
+        <div class="project-info" style="font-size: 16px; font-weight: bold; margin: 8px 0;">报价：48万</div>
+        <div class="project-info">资质：⭐⭐⭐⭐ | 信用分：88</div>
+        <div class="project-info">完成项目：15个 | 好评率：95%</div>
+        <div class="project-actions">
+          <a href="bid-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="../common/chat.html" class="btn btn-small btn-secondary">沟通</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-title">XX测绘公司</div>
+        <div class="project-info" style="font-size: 16px; font-weight: bold; margin: 8px 0;">报价：49万</div>
+        <div class="project-info">资质：⭐⭐⭐⭐ | 信用分：90</div>
+        <div class="project-info">完成项目：18个 | 好评率：96%</div>
+        <div class="project-actions">
+          <a href="bid-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="../common/chat.html" class="btn btn-small btn-secondary">沟通</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-title">XX勘察队</div>
+        <div class="project-info" style="font-size: 16px; font-weight: bold; margin: 8px 0;">报价：50万</div>
+        <div class="project-info">资质：⭐⭐⭐ | 信用分：85</div>
+        <div class="project-info">完成项目：12个 | 好评率：93%</div>
+        <div class="project-actions">
+          <a href="bid-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="../common/chat.html" class="btn btn-small btn-secondary">沟通</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="card-title">XX探测服务中心</div>
+        <div class="project-info" style="font-size: 16px; font-weight: bold; margin: 8px 0;">报价：52万</div>
+        <div class="project-info">资质：⭐⭐⭐⭐⭐ | 信用分：92</div>
+        <div class="project-info">完成项目：30个 | 好评率：97%</div>
+        <div class="project-actions">
+          <a href="bid-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="../common/chat.html" class="btn btn-small btn-secondary">沟通</a>
+        </div>
+      </div>
+
+      <div style="padding: 16px 0;">
+        <button class="btn btn-primary" onclick="window.location.href='bid-opening.html'">开始开标</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

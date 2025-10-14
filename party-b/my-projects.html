@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的项目 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back"></div>
+    <div class="navbar-title">我的项目</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <!-- 筛选标签 -->
+    <div class="filter-tabs">
+      <button class="filter-tab active">已投标</button>
+      <button class="filter-tab">已中标</button>
+      <button class="filter-tab">进行中</button>
+      <button class="filter-tab">已完成</button>
+      <button class="filter-tab">未中标</button>
+    </div>
+
+    <div class="page-content" style="padding-top: 0;">
+      <div class="section-title">进行中 (2)</div>
+
+      <!-- 进行中的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX地下管线探测项目</div>
+          <div class="status-dot progress"></div>
+        </div>
+        <div class="project-info">合同金额：45万</div>
+        <div class="project-info">已收款：13.5万 | 进度：60%</div>
+        <div class="project-info">下次节点：第二阶段验收</div>
+        <div class="project-actions">
+          <a href="report-progress.html" class="btn btn-small btn-primary" style="flex: 1;">上报进度</a>
+          <a href="project-detail-mine.html" class="btn btn-small btn-secondary">查看详情</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX测绘项目</div>
+          <div class="status-dot progress"></div>
+        </div>
+        <div class="project-info">合同金额：30万</div>
+        <div class="project-info">已收款：9万 | 进度：35%</div>
+        <div class="project-info">下次节点：第一阶段验收</div>
+        <div class="project-actions">
+          <a href="report-progress.html" class="btn btn-small btn-primary" style="flex: 1;">上报进度</a>
+          <a href="project-detail-mine.html" class="btn btn-small btn-secondary">查看详情</a>
+        </div>
+      </div>
+
+      <div class="section-title">已投标 (3)</div>
+
+      <!-- 已投标的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX项目</div>
+          <div class="status-dot pending"></div>
+        </div>
+        <div class="project-info">我的报价：48万</div>
+        <div class="project-info">当前排名：第2 / 共8家</div>
+        <div class="project-info" style="color: var(--warning-color);">⏰ 开标时间：还剩2天</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX地质勘察项目</div>
+          <div class="status-dot pending"></div>
+        </div>
+        <div class="project-info">我的报价：80万</div>
+        <div class="project-info">当前排名：第1 / 共5家</div>
+        <div class="project-info" style="color: var(--warning-color);">⏰ 开标时间：还剩5天</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX工程测量项目</div>
+          <div class="status-dot pending"></div>
+        </div>
+        <div class="project-info">我的报价：35万</div>
+        <div class="project-info">当前排名：第5 / 共12家</div>
+        <div class="project-info" style="color: var(--warning-color);">⏰ 开标时间：还剩3天</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+
+      <div class="section-title">已完成 (15)</div>
+
+      <!-- 已完成的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX项目</div>
+          <div class="status-dot completed"></div>
+        </div>
+        <div class="project-info">完成时间：2025-09-15</div>
+        <div class="project-info">甲方评价：⭐⭐⭐⭐⭐</div>
+        <div class="project-info">收款：已全部到账</div>
+        <div class="project-actions">
+          <a href="project-detail-mine.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+          <button class="btn btn-small btn-secondary">再次合作</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX测绘项目</div>
+          <div class="status-dot completed"></div>
+        </div>
+        <div class="project-info">完成时间：2025-08-20</div>
+        <div class="project-info">甲方评价：⭐⭐⭐⭐</div>
+        <div class="project-info">收款：已全部到账</div>
+        <div class="project-actions">
+          <a href="project-detail-mine.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>找活</div>
+    </a>
+    <a href="my-projects.html" class="tabbar-item active">
+      <div class="tabbar-icon">📋</div>
+      <div>我的项目</div>
+    </a>
+    <a href="../common/messages.html" class="tabbar-item">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+    <a href="profile.html" class="tabbar-item">
+      <div class="tabbar-icon">👤</div>
+      <div>我的</div>
+    </a>
+  </div>
+</body>
+</html>
+

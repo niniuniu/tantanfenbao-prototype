@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>项目监控 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">项目监控</div>
+    <div class="navbar-action">搜索</div>
+  </div>
+
+  <div class="page">
+    <div class="page-content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">总项目数</div>
+          <div class="stat-value">356</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">进行中</div>
+          <div class="stat-value">89</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">已完成</div>
+          <div class="stat-value">245</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">异常项目</div>
+          <div class="stat-value" style="color: var(--error-color);">3</div>
+        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active">全部</button>
+        <button class="filter-tab">投标中</button>
+        <button class="filter-tab">进行中</button>
+        <button class="filter-tab">已完成</button>
+        <button class="filter-tab">异常</button>
+      </div>
+
+      <div class="project-card" style="border-left: 4px solid var(--error-color);">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="tag" style="background: rgba(239, 68, 68, 0.1); color: var(--error-color);">⚠️ 进度超期</div>
+          <div class="tag tag-success">进行中</div>
+        </div>
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info">项目ID：P2025100012</div>
+        <div class="project-info">甲方：XX建设集团 | 乙方：XX探测公司</div>
+        <div class="project-info">合同金额：45万 | 平台佣金：2.25万（5%）</div>
+        <div class="project-info">开工日期：2025-09-01 | 预计完工：2025-11-30</div>
+        <div class="project-info" style="color: var(--error-color);">⚠️ 当前进度：60% | 时间已过：80% | 进度落后</div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-secondary" style="flex: 1;">查看详情</button>
+          <button class="btn btn-small btn-primary">发送提醒</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="tag tag-success">进行中</div>
+        </div>
+        <div class="card-title">XX地质勘察项目</div>
+        <div class="project-info">项目ID：P2025090008</div>
+        <div class="project-info">甲方：XX开发公司 | 乙方：XX勘察队</div>
+        <div class="project-info">合同金额：30万 | 平台佣金：1.5万（5%）</div>
+        <div class="project-info">开工日期：2025-08-15 | 进度：35%</div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-secondary" style="flex: 1;">查看详情</button>
+        </div>
+      </div>
+
+      <div class="project-card" style="opacity: 0.7;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="tag" style="background: var(--bg-page); color: var(--text-secondary);">已完成</div>
+        </div>
+        <div class="card-title">XX测绘项目</div>
+        <div class="project-info">项目ID：P2025080005</div>
+        <div class="project-info">完成时间：2025-09-15 | 评价：⭐⭐⭐⭐⭐</div>
+        <div class="project-info">合同金额：50万 | <span style="color: var(--success-color);">已收佣金：2.5万</span></div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-text" style="flex: 1;">查看详情</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item active">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>资金管理 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">资金管理</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <div class="page">
+    <div class="page-content">
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">💰 资金概览</div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">托管总额</div>
+            <div class="stat-value" style="font-size: 20px;">890万</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">平台收入</div>
+            <div class="stat-value" style="font-size: 20px;">178.9万</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">待分佣金额</div>
+            <div class="stat-value" style="font-size: 20px; color: var(--warning-color);">12.5万</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">本月佣金</div>
+            <div class="stat-value" style="font-size: 20px;">45.2万</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">托管资金明细</div>
+
+      <div class="card">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="card-title" style="margin-bottom: 4px;">XX地下管线探测项目</div>
+            <div class="text-small">项目ID：P2025100012</div>
+          </div>
+          <div class="tag tag-success">托管中</div>
+        </div>
+        <div class="project-info">托管金额：45万</div>
+        <div class="project-info">已支付：13.5万（30%）</div>
+        <div class="project-info">待支付：31.5万（70%）</div>
+        <div class="project-info">预计佣金：2.25万（5%）</div>
+        <div class="divider"></div>
+        <div class="project-info" style="color: var(--text-secondary);">托管时间：2025-09-01 | 状态：进行中</div>
+      </div>
+
+      <div class="section-title">待分佣项目</div>
+
+      <div class="card" style="border: 2px solid var(--warning-color);">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="card-title" style="margin-bottom: 4px;">XX测绘项目</div>
+            <div class="text-small">项目ID：P2025080005</div>
+          </div>
+          <div class="tag tag-warning">待分佣</div>
+        </div>
+        <div class="project-info">项目金额：50万</div>
+        <div class="project-info">应收佣金：2.5万（5%）</div>
+        <div class="project-info" style="color: var(--success-color);">✅ 验收完成，可自动分佣</div>
+        <div class="divider"></div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-primary" style="flex: 1;" onclick="alert('已自动分佣成功！\n平台收入：2.5万元')">立即分佣</button>
+        </div>
+      </div>
+
+      <div class="section-title">资金流水记录</div>
+
+      <div class="card" style="padding: 0;">
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">✅ 分佣成功</div>
+            <div class="list-item-desc">P2025080005 | XX测绘项目</div>
+            <div class="list-item-desc">+ ¥25,000.00</div>
+          </div>
+          <div class="text-small">今天 14:35</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">💰 资金托管</div>
+            <div class="list-item-desc">P2025100020 | XX项目</div>
+            <div class="list-item-desc">托管：¥300,000.00</div>
+          </div>
+          <div class="text-small">今天 10:20</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">✅ 分佣成功</div>
+            <div class="list-item-desc">P2025070012 | XX勘察项目</div>
+            <div class="list-item-desc">+ ¥18,000.00</div>
+          </div>
+          <div class="text-small">昨天 16:45</div>
+        </div>
+
+        <div class="list-item">
+          <div class="list-item-content">
+            <div class="list-item-title">💸 资金支付</div>
+            <div class="list-item-desc">P2025100012 | 验收付款</div>
+            <div class="list-item-desc">- ¥225,000.00</div>
+          </div>
+          <div class="text-small">昨天 14:20</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 16px; color: var(--text-secondary);">
+        显示最近10条记录
+        <div style="margin-top: 8px;">
+          <button class="btn btn-small btn-secondary">查看更多</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+

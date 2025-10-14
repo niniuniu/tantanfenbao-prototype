@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>认证审核 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">认证审核</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <div class="page">
+    <div class="page-content">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">待审核</div>
+          <div class="stat-value" style="color: var(--warning-color);">23</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">今日已审</div>
+          <div class="stat-value">8</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">通过率</div>
+          <div class="stat-value">92%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">本月审核</div>
+          <div class="stat-value">145</div>
+        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active">待审核</button>
+        <button class="filter-tab">已通过</button>
+        <button class="filter-tab">已拒绝</button>
+      </div>
+
+      <!-- 待审核企业 -->
+      <div class="card" style="border: 2px solid var(--warning-color);">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="card-title">XX工程队</div>
+            <div class="text-small">UID: 20125 | 申请时间：2025-10-10 18:30</div>
+          </div>
+          <div class="tag tag-warning">⏳ 待审核</div>
+        </div>
+        <div class="project-info">类型：乙方 | 联系人：张工 | 电话：139****1234</div>
+        <div class="divider"></div>
+        <div class="project-info" style="margin-bottom: 8px; font-weight: bold;">提交资料：</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 12px;">
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 营业执照</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 探测资质证书</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 安全生产许可证</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 法人身份证</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+        </div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-primary" style="flex: 1;" onclick="approveUser()">✅ 通过认证</button>
+          <button class="btn btn-small" style="flex: 1; background: var(--error-color); color: white;" onclick="rejectUser()">❌ 拒绝认证</button>
+        </div>
+      </div>
+
+      <div class="card" style="border: 2px solid var(--warning-color);">
+        <div class="flex-between" style="margin-bottom: 12px;">
+          <div>
+            <div class="card-title">XX测绘公司</div>
+            <div class="text-small">UID: 20126 | 申请时间：2025-10-11 09:15</div>
+          </div>
+          <div class="tag tag-warning">⏳ 待审核</div>
+        </div>
+        <div class="project-info">类型：乙方 | 联系人：李总 | 电话：138****5678</div>
+        <div class="divider"></div>
+        <div class="project-info" style="margin-bottom: 8px; font-weight: bold;">提交资料：</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 12px;">
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 营业执照</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 测绘资质</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+          <div style="background: var(--bg-page); padding: 8px; border-radius: 6px; cursor: pointer;">
+            <div style="font-size: 12px; color: var(--text-secondary);">✅ 业绩证明</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">点击查看</div>
+          </div>
+        </div>
+        <div class="project-actions">
+          <button class="btn btn-small btn-primary" style="flex: 1;" onclick="approveUser()">✅ 通过认证</button>
+          <button class="btn btn-small" style="flex: 1; background: var(--error-color); color: white;" onclick="rejectUser()">❌ 拒绝认证</button>
+        </div>
+      </div>
+
+      <!-- 已审核记录 -->
+      <div class="section-title">最近审核记录</div>
+
+      <div class="card" style="opacity: 0.8;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div>
+            <div class="card-title" style="margin-bottom: 4px;">XX建筑公司</div>
+            <div class="text-small">UID: 10120 | 审核时间：今天 14:20</div>
+          </div>
+          <div class="tag tag-success">✅ 已通过</div>
+        </div>
+        <div class="text-small" style="color: var(--text-secondary);">审核人：管理员001 | 审核意见：资质齐全，通过认证</div>
+      </div>
+
+      <div class="card" style="opacity: 0.8;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div>
+            <div class="card-title" style="margin-bottom: 4px;">XX工程服务部</div>
+            <div class="text-small">UID: 20118 | 审核时间：今天 11:35</div>
+          </div>
+          <div class="tag" style="background: rgba(239, 68, 68, 0.1); color: var(--error-color);">❌ 已拒绝</div>
+        </div>
+        <div class="text-small" style="color: var(--text-secondary);">审核人：管理员002 | 审核意见：营业执照已过期，需更新后重新提交</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+
+  <script>
+    function approveUser() {
+      if (confirm('确认通过该企业的认证申请吗？')) {
+        alert('认证已通过！\n\n系统将自动：\n1. 发送通知给用户\n2. 开通完整功能权限\n3. 更新用户状态');
+        location.reload();
+      }
+    }
+
+    function rejectUser() {
+      const reason = prompt('请输入拒绝理由：\n（用户将收到此理由）', '资质材料不完整，请补充...');
+      if (reason) {
+        alert('已拒绝认证！\n\n拒绝理由：' + reason + '\n\n系统将自动通知用户');
+        location.reload();
+      }
+    }
+  </script>
+</body>
+</html>
+

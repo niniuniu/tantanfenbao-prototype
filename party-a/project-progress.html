@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>项目进度 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">项目进度</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 项目信息 -->
+      <div class="card">
+        <div class="card-title">XX地下管线探测项目</div>
+        <div class="project-info" style="margin-top: 8px;">中标方：XX探测公司</div>
+        <div class="project-info">合同金额：45万 | 已付：13.5万</div>
+        <div class="project-info">开工日期：2025-09-01</div>
+        <div class="project-info">预计完工：2025-11-30</div>
+      </div>
+
+      <!-- 整体进度 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px;">整体进度</div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 60%;"></div>
+        </div>
+        <div style="text-align: center; font-size: 24px; font-weight: bold; color: var(--primary-color); margin-top: 8px;">60%</div>
+      </div>
+
+      <!-- 进度时间轴 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">进度时间轴</div>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">✅ 2025-09-01</div>
+              <div class="timeline-desc">合同签署完成</div>
+              <div class="timeline-desc">已付款：13.5万（30%）</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">✅ 2025-10-05</div>
+              <div class="timeline-desc">第一阶段验收通过</div>
+              <div class="timeline-desc">现场照片 [3张]</div>
+              <div class="timeline-desc" style="color: var(--primary-color);">📄 验收报告.pdf</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot active" style="border-color: var(--primary-color); background: var(--primary-color);"></div>
+            <div class="timeline-content" style="border: 2px solid var(--primary-color);">
+              <div class="timeline-date">🔵 2025-10-12（当前）</div>
+              <div class="timeline-desc">正在进行第二阶段作业</div>
+              <div class="timeline-desc">进度更新：已完成60%</div>
+              <div class="timeline-desc">最新说明：主要管线探测完成，正在进行数据整理...</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">⚪ 待进行</div>
+              <div class="timeline-desc">第二阶段验收</div>
+              <div class="timeline-desc">预计时间：2025-10-25</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">⚪ 待进行</div>
+              <div class="timeline-desc">最终验收与结算</div>
+              <div class="timeline-desc">预计时间：2025-11-30</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 16px 0; display: flex; gap: 12px;">
+        <a href="../common/chat.html" class="btn btn-secondary" style="flex: 1;">联系乙方</a>
+        <a href="acceptance-detail.html" class="btn btn-primary" style="flex: 1;">申请验收</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

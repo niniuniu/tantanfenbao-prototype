@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>页面导航 - 探测分包撮合平台原型</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .page-nav {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .page-nav h1 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 32px;
+    }
+    .page-category {
+      margin-bottom: 32px;
+    }
+    .page-category h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .page-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .page-link {
+      display: block;
+      padding: 12px 16px;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+    .page-link:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .page-link-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .page-link-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .start-button {
+      text-align: center;
+      margin: 32px 0;
+    }
+    .start-button a {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .start-button a:hover {
+      background: #2563EB;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-nav">
+    <h1>🏗️ 探测分包撮合平台 - 原型导航</h1>
+
+    <div class="start-button">
+      <a href="index.html">🚀 开始体验原型</a>
+    </div>
+
+    <!-- 甲方端页面 -->
+    <div class="page-category">
+      <h2>🏢 甲方端（发包方）</h2>
+      <div class="page-links">
+        <a href="party-a/home.html" class="page-link">
+          <div class="page-link-title">🏠 甲方首页</div>
+          <div class="page-link-desc">快捷入口、进行中的项目</div>
+        </a>
+        <a href="party-a/publish-need.html" class="page-link">
+          <div class="page-link-title">📝 发布需求</div>
+          <div class="page-link-desc">填写项目信息、设置投标规则</div>
+        </a>
+        <a href="party-a/my-needs.html" class="page-link">
+          <div class="page-link-title">📋 我的需求</div>
+          <div class="page-link-desc">管理所有发布的需求</div>
+        </a>
+        <a href="party-a/bid-list.html" class="page-link">
+          <div class="page-link-title">📊 投标列表</div>
+          <div class="page-link-desc">查看所有投标方信息</div>
+        </a>
+        <a href="party-a/bid-opening.html" class="page-link">
+          <div class="page-link-title">⚖️ 在线开标</div>
+          <div class="page-link-desc">综合评分、选择中标方</div>
+        </a>
+        <a href="party-a/project-progress.html" class="page-link">
+          <div class="page-link-title">📈 项目进度</div>
+          <div class="page-link-desc">查看施工进度、时间轴</div>
+        </a>
+        <a href="party-a/acceptance-detail.html" class="page-link">
+          <div class="page-link-title">✅ 验收管理</div>
+          <div class="page-link-desc">查看成果、评分、付款</div>
+        </a>
+        <a href="party-a/profile.html" class="page-link">
+          <div class="page-link-title">👤 甲方个人中心</div>
+          <div class="page-link-desc">统计数据、功能入口</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 乙方端页面 -->
+    <div class="page-category">
+      <h2>👷 乙方端（包工头）</h2>
+      <div class="page-links">
+        <a href="party-b/home.html" class="page-link">
+          <div class="page-link-title">🏠 找活首页</div>
+          <div class="page-link-desc">浏览可投标的项目</div>
+        </a>
+        <a href="party-b/project-detail.html" class="page-link">
+          <div class="page-link-title">📄 项目详情</div>
+          <div class="page-link-desc">查看需求详情、甲方信息</div>
+        </a>
+        <a href="party-b/submit-bid.html" class="page-link">
+          <div class="page-link-title">🎯 提交投标</div>
+          <div class="page-link-desc">填写报价、上传资质</div>
+        </a>
+        <a href="party-b/my-projects.html" class="page-link">
+          <div class="page-link-title">📋 我的项目</div>
+          <div class="page-link-desc">管理投标和进行中的项目</div>
+        </a>
+        <a href="party-b/report-progress.html" class="page-link">
+          <div class="page-link-title">📊 上报进度</div>
+          <div class="page-link-desc">更新施工进度、上传照片</div>
+        </a>
+        <a href="party-b/qualifications.html" class="page-link">
+          <div class="page-link-title">🎖️ 资质管理</div>
+          <div class="page-link-desc">管理企业资质证书</div>
+        </a>
+        <a href="party-b/profile.html" class="page-link">
+          <div class="page-link-title">👤 乙方个人中心</div>
+          <div class="page-link-desc">数据统计、功能入口</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 平台管理端页面 -->
+    <div class="page-category">
+      <h2>⚙️ 平台管理端</h2>
+      <div class="page-links">
+        <a href="platform/home.html" class="page-link">
+          <div class="page-link-title">🏠 平台管理首页</div>
+          <div class="page-link-desc">总览数据、快捷功能入口</div>
+        </a>
+        <a href="platform/users.html" class="page-link">
+          <div class="page-link-title">👥 用户管理</div>
+          <div class="page-link-desc">甲方、乙方用户审核管理</div>
+        </a>
+        <a href="platform/projects.html" class="page-link">
+          <div class="page-link-title">📋 项目监控</div>
+          <div class="page-link-desc">所有项目实时状态监控</div>
+        </a>
+        <a href="platform/funds.html" class="page-link">
+          <div class="page-link-title">💰 资金管理</div>
+          <div class="page-link-desc">托管资金、自动分佣</div>
+        </a>
+        <a href="platform/audit.html" class="page-link">
+          <div class="page-link-title">✅ 认证审核</div>
+          <div class="page-link-desc">企业资质审核</div>
+        </a>
+        <a href="platform/reports.html" class="page-link">
+          <div class="page-link-title">📊 数据报表</div>
+          <div class="page-link-desc">统计分析、报表生成</div>
+        </a>
+        <a href="platform/ratings.html" class="page-link">
+          <div class="page-link-title">⭐ 评价管理</div>
+          <div class="page-link-desc">双向评价、投诉处理</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 通用功能页面 -->
+    <div class="page-category">
+      <h2>🔧 通用功能</h2>
+      <div class="page-links">
+        <a href="common/messages.html" class="page-link">
+          <div class="page-link-title">💬 消息中心</div>
+          <div class="page-link-desc">系统通知、项目消息、私信</div>
+        </a>
+        <a href="common/chat.html" class="page-link">
+          <div class="page-link-title">💭 聊天对话</div>
+          <div class="page-link-desc">与甲方/乙方沟通</div>
+        </a>
+        <a href="common/contracts.html" class="page-link">
+          <div class="page-link-title">📜 合同管理</div>
+          <div class="page-link-desc">查看电子合同、付款记录</div>
+        </a>
+        <a href="common/settings.html" class="page-link">
+          <div class="page-link-title">⚙️ 设置</div>
+          <div class="page-link-desc">账号安全、通知设置</div>
+        </a>
+        <a href="common/help.html" class="page-link">
+          <div class="page-link-title">❓ 帮助中心</div>
+          <div class="page-link-desc">新手指南、常见问题</div>
+        </a>
+      </div>
+    </div>
+
+
+    <div style="background: var(--bg-page); padding: 24px; border-radius: 12px; margin-top: 32px;">
+      <h3 style="color: var(--primary-color); margin-bottom: 16px;">💡 使用提示</h3>
+      <ul style="color: var(--text-secondary); line-height: 1.8;">
+        <li>点击上方"开始体验原型"进入身份选择页面，选择甲方、乙方或平台管理端身份</li>
+        <li>或直接点击具体页面链接快速跳转到该页面</li>
+        <li>建议使用Chrome浏览器，按F12开启移动端模式查看</li>
+        <li>所有页面间都有跳转链接，可以完整体验业务流程</li>
+        <li>这是纯前端原型，表单提交不会保存数据</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 48px; padding: 24px; color: var(--text-secondary);">
+      <p>版本：v1.0.0</p>
+      <p style="margin-top: 8px;">探测分包撮合平台 HTML交互原型</p>
+    </div>
+  </div>
+</body>
+</html>
+

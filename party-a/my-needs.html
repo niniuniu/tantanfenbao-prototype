@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的需求 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">我的需求</div>
+    <div class="navbar-action" onclick="window.location.href='publish-need.html'">+ 发布新需求</div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <!-- 筛选标签 -->
+    <div class="filter-tabs">
+      <button class="filter-tab active">全部</button>
+      <button class="filter-tab">投标中</button>
+      <button class="filter-tab">已开标</button>
+      <button class="filter-tab">进行中</button>
+      <button class="filter-tab">已完成</button>
+      <button class="filter-tab">已取消</button>
+    </div>
+
+    <div class="page-content" style="padding-top: 0;">
+      <!-- 投标中的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX地下管线探测项目</div>
+          <div class="status-dot pending"></div>
+        </div>
+        <div class="project-info">预算：50万 | 投标数：8</div>
+        <div class="project-info">投标截止：2025-10-20</div>
+        <div class="project-actions">
+          <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
+          <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
+          <button class="btn btn-small btn-text" style="color: var(--error-color);">取消</button>
+        </div>
+      </div>
+
+      <!-- 进行中的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX地质勘察项目</div>
+          <div class="status-dot progress"></div>
+        </div>
+        <div class="project-info">中标方：XX探测公司</div>
+        <div class="project-info">合同金额：45万 | 进度：60%</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
+          <a href="project-progress.html" class="btn btn-small btn-secondary">查看进度</a>
+          <a href="acceptance-detail.html" class="btn btn-small btn-primary">验收</a>
+        </div>
+      </div>
+
+      <!-- 已完成的项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX项目</div>
+          <div class="status-dot completed"></div>
+        </div>
+        <div class="project-info">完成时间：2025-09-15</div>
+        <div class="project-info">评价：⭐⭐⭐⭐⭐</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+
+      <!-- 更多项目 -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX测绘项目</div>
+          <div class="status-dot completed"></div>
+        </div>
+        <div class="project-info">完成时间：2025-08-20</div>
+        <div class="project-info">评价：⭐⭐⭐⭐</div>
+        <div class="project-actions">
+          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">XX探测项目</div>
+          <div class="status-dot pending"></div>
+        </div>
+        <div class="project-info">预算：30万 | 投标数：5</div>
+        <div class="project-info">投标截止：2025-10-25</div>
+        <div class="project-actions">
+          <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
+          <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="my-needs.html" class="tabbar-item active">
+      <div class="tabbar-icon">📋</div>
+      <div>我的需求</div>
+    </a>
+    <a href="../common/messages.html" class="tabbar-item">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+    <a href="profile.html" class="tabbar-item">
+      <div class="tabbar-icon">👤</div>
+      <div>我的</div>
+    </a>
+  </div>
+</body>
+</html>
+

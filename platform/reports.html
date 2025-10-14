@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>数据报表 - 平台管理后台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    body { max-width: 1200px; }
+    .chart-placeholder {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">数据报表</div>
+    <div class="navbar-action">导出</div>
+  </div>
+
+  <div class="page">
+    <div class="page-content">
+      <!-- 时间筛选 -->
+      <div class="card">
+        <div class="filter-tabs">
+          <button class="filter-tab">今日</button>
+          <button class="filter-tab">本周</button>
+          <button class="filter-tab active">本月</button>
+          <button class="filter-tab">本年</button>
+          <button class="filter-tab">自定义</button>
+        </div>
+      </div>
+
+      <!-- 综合数据 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📊 本月综合数据</div>
+        <div class="stats-overview" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px;">
+          <div class="stat-item">
+            <div class="stat-label">新增用户</div>
+            <div class="stat-value">125</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 18%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">新增项目</div>
+            <div class="stat-value">89</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 12%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">完成项目</div>
+            <div class="stat-value">67</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 8%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">交易额</div>
+            <div class="stat-value" style="font-size: 20px;">580万</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 15%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">平台收入</div>
+            <div class="stat-value" style="font-size: 20px;">29万</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 15%</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">活跃用户</div>
+            <div class="stat-value">856</div>
+            <div style="font-size: 12px; color: var(--success-color); margin-top: 4px;">↑ 22%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 交易趋势图 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📈 交易趋势（本月）</div>
+        <div class="chart-placeholder">
+          [折线图占位]<br>
+          横轴：日期 | 纵轴：交易金额<br>
+          实际开发时接入ECharts图表库
+        </div>
+      </div>
+
+      <!-- 用户增长趋势 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">👥 用户增长趋势</div>
+        <div class="chart-placeholder">
+          [柱状图占位]<br>
+          显示甲方、乙方每日新增用户数<br>
+          实际开发时接入ECharts图表库
+        </div>
+      </div>
+
+      <!-- 项目类型分布 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📊 项目类型分布</div>
+        <div class="chart-placeholder" style="height: 200px;">
+          [饼图占位]<br>
+          地下管线探测 45% | 地质勘察 30% | 工程测量 25%<br>
+          实际开发时接入ECharts图表库
+        </div>
+      </div>
+
+      <!-- 详细数据表格 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">📋 详细数据明细</div>
+        
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead style="background: var(--bg-page);">
+              <tr>
+                <th style="padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color);">日期</th>
+                <th style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">新增用户</th>
+                <th style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">新增项目</th>
+                <th style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color);">交易额</th>
+                <th style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color);">平台收入</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">2025-10-12</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">8</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">5</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color);">¥350,000</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color); color: var(--success-color);">¥17,500</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">2025-10-11</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">12</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">7</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color);">¥580,000</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color); color: var(--success-color);">¥29,000</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border-bottom: 1px solid var(--border-color);">2025-10-10</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">6</td>
+                <td style="padding: 12px; text-align: center; border-bottom: 1px solid var(--border-color);">4</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color);">¥280,000</td>
+                <td style="padding: 12px; text-align: right; border-bottom: 1px solid var(--border-color); color: var(--success-color);">¥14,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: center; padding: 16px; color: var(--text-secondary);">
+          <button class="btn btn-small btn-secondary">查看更多数据</button>
+          <button class="btn btn-small btn-primary" style="margin-left: 8px;">导出Excel</button>
+        </div>
+      </div>
+
+      <!-- 热门数据 -->
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 16px;">🔥 热门排行</div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <div style="font-weight: bold; margin-bottom: 12px; color: var(--primary-color);">Top 5 活跃甲方</div>
+            <div style="font-size: 12px; line-height: 2;">
+              <div>1. XX建设集团 - 发包25个</div>
+              <div>2. XX开发公司 - 发包18个</div>
+              <div>3. XX房地产 - 发包15个</div>
+              <div>4. XX市政公司 - 发包12个</div>
+              <div>5. XX建筑集团 - 发包10个</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-weight: bold; margin-bottom: 12px; color: var(--secondary-color);">Top 5 活跃乙方</div>
+            <div style="font-size: 12px; line-height: 2;">
+              <div>1. XX探测公司 - 接单23个</div>
+              <div>2. XX测绘公司 - 接单18个</div>
+              <div>3. XX勘察队 - 接单16个</div>
+              <div>4. XX工程队 - 接单15个</div>
+              <div>5. XX探测服务中心 - 接单12个</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="users.html" class="tabbar-item">
+      <div class="tabbar-icon">👥</div>
+      <div>用户</div>
+    </a>
+    <a href="projects.html" class="tabbar-item">
+      <div class="tabbar-icon">📋</div>
+      <div>项目</div>
+    </a>
+    <a href="reports.html" class="tabbar-item active">
+      <div class="tabbar-icon">📊</div>
+      <div>报表</div>
+    </a>
+  </div>
+</body>
+</html>
+

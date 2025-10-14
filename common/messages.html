@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>消息中心 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">消息中心</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <!-- 筛选标签 -->
+    <div class="filter-tabs">
+      <button class="filter-tab active">全部</button>
+      <button class="filter-tab">系统通知</button>
+      <button class="filter-tab">项目消息</button>
+      <button class="filter-tab">私信</button>
+    </div>
+
+    <div class="page-content" style="padding-top: 0;">
+      <div class="section-title">今天</div>
+
+      <!-- 系统通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; background: var(--primary-color); border-radius: 50%;"></div>
+            <div class="card-title" style="margin: 0;">系统通知</div>
+          </div>
+          <div class="text-small">14:35</div>
+        </div>
+        <div class="project-info">您的项目"XX地下管线探测"收到新的投标</div>
+      </a>
+
+      <!-- 私信 -->
+      <a href="chat.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 8px; height: 8px; background: var(--primary-color); border-radius: 50%;"></div>
+            <div class="card-title" style="margin: 0;">XX探测公司</div>
+          </div>
+          <div class="text-small">10:22</div>
+        </div>
+        <div class="project-info">关于项目细节想和您沟通一下</div>
+      </a>
+
+      <div class="section-title">昨天</div>
+
+      <!-- 中标通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title" style="margin: 0;">🏆 系统通知</div>
+          </div>
+          <div class="text-small">昨天 18:20</div>
+        </div>
+        <div class="project-info">恭喜！您中标了"XX项目"</div>
+      </a>
+
+      <!-- 付款通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title" style="margin: 0;">💰 付款通知</div>
+          </div>
+          <div class="text-small">昨天 15:40</div>
+        </div>
+        <div class="project-info">XX项目验收款已到账，请查收</div>
+      </a>
+
+      <!-- 验收通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="card-title" style="margin: 0;">✅ 项目消息</div>
+          </div>
+          <div class="text-small">昨天 09:15</div>
+        </div>
+        <div class="project-info">甲方已完成阶段验收，评分：⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <div class="section-title">更早</div>
+
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="card-title" style="margin: 0;">系统通知</div>
+          <div class="text-small">10-10</div>
+        </div>
+        <div class="project-info">您的资质"安全生产许可证"即将到期，请及时更新</div>
+      </a>
+
+      <a href="chat.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="card-title" style="margin: 0;">XX建设集团</div>
+          <div class="text-small">10-09</div>
+        </div>
+        <div class="project-info">项目进度更新已收到，感谢配合</div>
+      </a>
+
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit;">
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <div class="card-title" style="margin: 0;">系统通知</div>
+          <div class="text-small">10-08</div>
+        </div>
+        <div class="project-info">平台将于10月15日进行系统维护，预计2小时</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+
