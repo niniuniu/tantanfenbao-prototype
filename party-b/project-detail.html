@@ -1,106 +1,313 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>项目详情 - 探测分包撮合平台</title>
-  <link rel="stylesheet" href="../css/common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>项目详情 - 探测分包撮合平台</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* 自定义样式覆盖 */
+        body {
+            background: #F8FAFC;
+        }
+        
+        /* 项目头部 */
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 16px;
+            margin: -16px -16px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-tags {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .project-urgent {
+            background: #FF4757;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-budget {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .project-distance {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .project-time {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* 项目详情卡片 */
+        .project-detail-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 16px;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .detail-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .detail-content {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .requirement-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .requirement-list li {
+            padding: 4px 0;
+            position: relative;
+            padding-left: 16px;
+        }
+        
+        .requirement-list li::before {
+            content: '•';
+            color: #FF6B35;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* 投标按钮 */
+        .bid-section {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 16px;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .bid-button {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .bid-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* 底部间距 */
+        .page-content {
+            padding-bottom: 80px;
+        }
+    </style>
 </head>
 <body>
-  <!-- 顶部导航栏 -->
-  <div class="navbar">
-    <div class="navbar-back" onclick="history.back()">←</div>
-    <div class="navbar-title">项目详情</div>
-    <div class="navbar-action">⭐ 收藏</div>
-  </div>
+    <!-- 页面内容 -->
+    <div class="page">
+        <div class="page-content">
+            <!-- 项目头部 -->
+            <div class="project-header">
+                <div class="project-title">北京地铁15号线地下管线探测</div>
+                <div class="project-tags">
+                    <span class="project-tag">政府重点项目</span>
+                    <span class="project-tag">高额预算</span>
+                    <span class="project-tag">长期合作</span>
+                    <span class="project-urgent">急招</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-budget">💰 预算：280万</div>
+                    <div class="project-distance">📍 距离：8km</div>
+                    <div class="project-time">⏰ 剩余：3天</div>
+                </div>
+            </div>
 
-  <!-- 页面内容 -->
-  <div class="page">
-    <div class="page-content">
-      <!-- 项目基本信息 -->
-      <div class="card">
-        <div class="card-title">XX地下管线探测项目</div>
-        <div class="project-info" style="font-size: 18px; font-weight: bold; color: var(--primary-color); margin: 12px 0;">预算：50万</div>
-        <div class="project-info">投标截止：2025-10-20 18:00</div>
-        <div class="project-info" style="color: var(--warning-color);">⏰ 还剩2天5小时</div>
-      </div>
+            <!-- 项目详情 -->
+            <div class="project-detail-card">
+                <div class="detail-section">
+                    <div class="detail-title">
+                        <span class="detail-icon">📋</span>
+                        项目描述
+                    </div>
+                    <div class="detail-content">
+                        北京地铁15号线地下管线探测项目，需要对沿线地下管线进行全面探测和定位，确保地铁施工安全。项目涉及给水、排水、燃气、电力、通信等多种管线类型，要求使用先进的探测设备和技术手段。
+                    </div>
+                </div>
+            </div>
 
-      <!-- 发布方信息 -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom: 12px;">发布方信息</div>
-        <div class="project-info">企业：XX建设集团</div>
-        <div class="project-info">信用：⭐⭐⭐⭐⭐</div>
-        <div class="project-info">历史发包：35个项目</div>
-      </div>
+            <div class="project-detail-card">
+                <div class="detail-section">
+                    <div class="detail-title">
+                        <span class="detail-icon">📝</span>
+                        项目要求
+                    </div>
+                    <div class="detail-content">
+                        <ul class="requirement-list">
+                            <li>具备地下管线探测甲级资质</li>
+                            <li>3年以上地铁项目经验</li>
+                            <li>拥有专业探测设备</li>
+                            <li>团队不少于5人</li>
+                            <li>能够提供详细探测报告</li>
+                            <li>具备应急响应能力</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-      <!-- 项目详细信息 -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom: 12px;">项目基本信息</div>
-        <div class="form-group">
-          <label class="form-label">项目地点</label>
-          <div class="project-info">XX市XX区XX路</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">探测类型</label>
-          <div class="project-info">地下管线探测</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">工期要求</label>
-          <div class="project-info">开始时间：2025-11-01</div>
-          <div class="project-info">结束时间：2025-12-31</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">项目描述</label>
-          <div class="project-info">需要对XX区域进行地下管线探测，包括给水、排水、燃气、电力等管线的位置、走向、深度等信息的探测与标注。项目总面积约5万平方米，预计工期2个月。</div>
-        </div>
-      </div>
+            <div class="project-detail-card">
+                <div class="detail-section">
+                    <div class="detail-title">
+                        <span class="detail-icon">📊</span>
+                        投标情况
+                    </div>
+                    <div class="detail-content">
+                        已有12家包工头投标，竞争激烈。甲方将根据技术方案、价格、经验等因素综合评估，预计3天内确定中标方。
+                    </div>
+                </div>
+            </div>
 
-      <!-- 资质要求 -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom: 12px;">资质要求</div>
-        <div class="project-info">✅ 需要相关资质证书</div>
-        <div class="project-info">✅ 需要安全生产许可</div>
-        <div class="project-info">❌ 需要测绘资质</div>
-      </div>
-
-      <!-- 投标要求 -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom: 12px;">投标要求</div>
-        <div class="project-info">保证金：5000元</div>
-        <div class="project-info">当前投标数：8家</div>
-      </div>
-
-      <!-- 附件资料 -->
-      <div class="card">
-        <div class="card-title" style="margin-bottom: 12px;">附件资料</div>
-        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
-          <div class="list-item-content">
-            <div class="list-item-title">📄 项目技术要求.pdf</div>
-            <div class="list-item-desc">1.5 MB</div>
-          </div>
-          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
+            <div class="project-detail-card">
+                <div class="detail-title">
+                    <span class="detail-icon">👥</span>
+                    甲方信息
+                </div>
+                <div class="detail-content">
+                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                        <div style="width: 40px; height: 40px; background: #F8FAFC; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                            🏢
+                        </div>
+                        <div>
+                            <div style="font-weight: bold; color: #333;">北京地铁建设集团</div>
+                            <div style="font-size: 12px; color: #666;">认证企业</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 12px; color: #666;">
+                        联系人：张经理 | 电话：138****8888
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="list-item" style="padding: 12px; margin-bottom: 8px;">
-          <div class="list-item-content">
-            <div class="list-item-title">📄 现场图纸.dwg</div>
-            <div class="list-item-desc">3.2 MB</div>
-          </div>
-          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
-        </div>
-        <div class="list-item" style="padding: 12px;">
-          <div class="list-item-content">
-            <div class="list-item-title">📸 现场照片</div>
-            <div class="list-item-desc">5张</div>
-          </div>
-          <div class="list-item-arrow" style="color: var(--primary-color);">查看</div>
-        </div>
-      </div>
-
-      <div style="padding: 16px 0;">
-        <button class="btn btn-primary" onclick="window.location.href='submit-bid.html'">立即投标</button>
-      </div>
     </div>
-  </div>
+
+    <!-- 投标按钮 -->
+    <div class="bid-section">
+        <button class="bid-button" onclick="alert('投标功能开发中...')">
+            立即投标 · 高额回报
+        </button>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tabbar">
+        <a href="home.html" class="tabbar-item">
+            <div class="tabbar-icon">🏠</div>
+            <div>首页</div>
+        </a>
+        <a href="project-categories.html" class="tabbar-item">
+            <div class="tabbar-icon">📂</div>
+            <div>分类</div>
+        </a>
+        <a href="../common/messages.html" class="tabbar-item">
+            <div class="tabbar-icon">💬</div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tabbar-item">
+            <div class="tabbar-icon">👤</div>
+            <div>我的</div>
+        </a>
+    </div>
+
+    <style>
+        /* 底部导航栏优化 */
+        .tabbar {
+            background: white;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tabbar-item.active {
+            color: #FF6B35;
+        }
+        
+        .tabbar-item.active .tabbar-icon {
+            transform: scale(1.1);
+        }
+    </style>
 </body>
 </html>
-

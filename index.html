@@ -6,96 +6,215 @@
   <title>探测分包撮合平台</title>
   <link rel="stylesheet" href="css/common.css">
   <style>
-    .welcome-page {
+    /* 首次引导弹窗 */
+    .welcome-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .welcome-modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .role-buttons {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .role-btn {
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .role-btn-contractor {
+      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+      color: white;
+    }
+
+    .role-btn-contractor:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .role-btn-client {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      color: white;
+    }
+
+    .role-btn-client:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+    }
+
+    .modal-tip {
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* 加载动画 */
+    .loading {
+      display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 32px;
-      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%);
     }
-    .logo-section {
+
+    .loading-content {
       text-align: center;
-      margin-bottom: 64px;
-    }
-    .logo-icon {
-      font-size: 80px;
-      margin-bottom: 16px;
-    }
-    .logo-title {
-      font-size: 24px;
-      font-weight: bold;
       color: white;
-      margin-bottom: 8px;
     }
-    .logo-subtitle {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    .role-selection {
-      width: 100%;
-    }
-    .role-card {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 16px;
-      cursor: pointer;
-      transition: transform 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .role-card:active {
-      transform: scale(0.98);
-    }
-    .role-icon {
-      font-size: 48px;
-      text-align: center;
+
+    .loading-icon {
+      font-size: 64px;
+      animation: bounce 1s infinite;
       margin-bottom: 16px;
     }
-    .role-title {
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .loading-text {
       font-size: 18px;
       font-weight: bold;
-      color: var(--text-primary);
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .role-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="welcome-page">
-    <div class="logo-section">
-      <div class="logo-icon">🏗️</div>
-      <div class="logo-title">探测分包撮合平台</div>
-      <div class="logo-subtitle">专业 · 高效 · 可信赖</div>
-    </div>
-
-    <div class="role-selection">
-      <a href="party-a/home.html" class="role-card">
-        <div class="role-icon">🏢</div>
-        <div class="role-title">我是甲方（发包方）</div>
-        <div class="role-desc">发布探测需求、选择承包方</div>
-      </a>
-
-      <a href="party-b/home.html" class="role-card">
-        <div class="role-icon">👷</div>
-        <div class="role-title">我是乙方（包工头）</div>
-        <div class="role-desc">查找项目、投标接活</div>
-      </a>
-
-      <a href="platform/home.html" class="role-card">
-        <div class="role-icon">⚙️</div>
-        <div class="role-title">平台管理后台</div>
-        <div class="role-desc">用户管理、项目监控、数据报表</div>
-      </a>
+  <!-- 加载页面 -->
+  <div class="loading" id="loading">
+    <div class="loading-content">
+      <div class="loading-icon">🏗️</div>
+      <div class="loading-text">探测分包撮合平台</div>
     </div>
   </div>
+
+  <!-- 首次使用引导弹窗 -->
+  <div class="welcome-modal" id="welcomeModal">
+    <div class="modal-content">
+      <div class="modal-icon">👋</div>
+      <div class="modal-title">欢迎使用</div>
+      <div class="modal-subtitle">请选择您的身份，开始使用</div>
+      <div class="role-buttons">
+        <button class="role-btn role-btn-contractor" onclick="selectRole('contractor')">
+          <span>👷</span>
+          <span>我是包工头（接活）</span>
+        </button>
+        <button class="role-btn role-btn-client" onclick="selectRole('client')">
+          <span>🏢</span>
+          <span>我是发包方（找人）</span>
+        </button>
+      </div>
+      <div class="modal-tip">稍后可在首页随时切换</div>
+    </div>
+  </div>
+
+  <script>
+    // 角色选择函数
+    function selectRole(role) {
+      // 保存用户选择
+      localStorage.setItem('userRole', role);
+      
+      // 跳转到对应页面
+      if (role === 'contractor') {
+        window.location.href = 'party-b/home.html';
+      } else if (role === 'client') {
+        window.location.href = 'party-a/home.html';
+      }
+    }
+
+    // 页面加载逻辑
+    window.addEventListener('DOMContentLoaded', function() {
+      // 检查是否是首次访问
+      const userRole = localStorage.getItem('userRole');
+      const isFirstVisit = localStorage.getItem('isFirstVisit');
+
+      // 模拟加载延迟，让用户看到品牌
+      setTimeout(function() {
+        if (!userRole || isFirstVisit === null) {
+          // 首次访问，显示引导弹窗
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('welcomeModal').classList.add('show');
+          localStorage.setItem('isFirstVisit', 'false');
+        } else {
+          // 不是首次访问，直接跳转到上次选择的页面
+          if (userRole === 'contractor') {
+            window.location.href = 'party-b/home.html';
+          } else if (userRole === 'client') {
+            window.location.href = 'party-a/home.html';
+          } else {
+            // 如果角色信息异常，显示选择弹窗
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('welcomeModal').classList.add('show');
+          }
+        }
+      }, 800);
+    });
+  </script>
 </body>
 </html>
-

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>项目分类 - 探测分包撮合平台</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* 自定义样式覆盖 */
+        body {
+            background: #F8FAFC;
+        }
+        
+        /* 页面头部 */
+        .page-header {
+            background: white;
+            padding: 16px;
+            margin: -16px -16px 0;
+            border-bottom: 1px solid #E5E7EB;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        /* 搜索框 */
+        .search-container {
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #E2E8F0;
+        }
+        
+        .location-selector {
+            color: #666;
+            font-size: 14px;
+            margin-right: 8px;
+            padding-right: 8px;
+            border-right: 1px solid #E2E8F0;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #666;
+            background: transparent;
+            margin-left: 8px;
+        }
+        
+        .search-input::placeholder {
+            color: #999;
+        }
+        
+        .search-icon {
+            color: #999;
+            font-size: 16px;
+            margin-left: 8px;
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            display: flex;
+            height: calc(100vh - 200px);
+        }
+        
+        /* 左侧分类导航 */
+        .category-nav {
+            width: 100px;
+            background: white;
+            border-right: 1px solid #E5E7EB;
+            overflow-y: auto;
+        }
+        
+        .category-nav-item {
+            display: block;
+            padding: 12px 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 12px;
+            border-bottom: 1px solid #F1F5F9;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .category-nav-item.active {
+            color: #1E3A8A;
+            background: #F8FAFC;
+        }
+        
+        .category-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1E3A8A;
+        }
+        
+        /* 右侧服务内容 */
+        .service-content {
+            flex: 1;
+            background: white;
+            overflow: hidden;
+            padding: 16px;
+            position: relative;
+        }
+        
+        .service-section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .service-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #F1F5F9;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: #F8FAFC;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 auto 8px;
+            border: 1px solid #E2E8F0;
+        }
+        
+        .service-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        /* 客服横幅 */
+        .customer-service-banner {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 300px;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 6px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .banner-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .banner-text {
+            font-size: 11px;
+            color: #1976D2;
+            white-space: nowrap;
+        }
+        
+        .banner-button {
+            background: transparent;
+            color: #2196F3;
+            border: 1px solid #2196F3;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        /* 悬停效果 */
+        .category-nav-item:hover {
+            background: #F8FAFC;
+            color: #1E3A8A;
+        }
+        
+        .service-content {
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-content.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .service-content.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面内容 -->
+    <div class="page">
+        <div class="page-content">
+            <!-- 页面头部 -->
+            <div class="page-header">
+                <div class="page-title">项目分类</div>
+                <div class="search-container">
+                    <span class="location-selector">北京 ▼</span>
+                    <span class="search-icon">Q</span>
+                    <input type="text" class="search-input" placeholder="搜索项目类型...">
+                </div>
+            </div>
+
+            <!-- 主要内容区域 -->
+            <div class="main-content">
+                <!-- 左侧分类导航 -->
+                <div class="category-nav">
+                    <a href="#" class="category-nav-item active" data-category="underground">地下管线</a>
+                    <a href="#" class="category-nav-item" data-category="geological">地质勘察</a>
+                    <a href="#" class="category-nav-item" data-category="surveying">工程测量</a>
+                    <a href="#" class="category-nav-item" data-category="environmental">环境监测</a>
+                    <a href="#" class="category-nav-item" data-category="electrical">电力检测</a>
+                    <a href="#" class="category-nav-item" data-category="water">水质检测</a>
+                    <a href="#" class="category-nav-item" data-category="building">建筑检测</a>
+                    <a href="#" class="category-nav-item" data-category="safety">安全评估</a>
+                    <a href="#" class="category-nav-item" data-category="other">其他服务</a>
+                </div>
+
+                <!-- 右侧服务内容 -->
+                <div class="service-content" id="serviceContent">
+                    <!-- 地下管线内容 -->
+                    <div class="category-content" id="underground" style="display: block;">
+                        <div class="service-section-title">管线探测</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🏗️</div>
+                                <div class="service-title">地下管线</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📡</div>
+                                <div class="service-title">管线定位</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔍</div>
+                                <div class="service-title">管线检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📊</div>
+                                <div class="service-title">管线测绘</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 地质勘察内容 -->
+                    <div class="category-content" id="geological" style="display: none;">
+                        <div class="service-section-title">地质勘察</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🌍</div>
+                                <div class="service-title">地质调查</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔬</div>
+                                <div class="service-title">地质分析</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📈</div>
+                                <div class="service-title">地质评估</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">⛏️</div>
+                                <div class="service-title">钻探服务</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 工程测量内容 -->
+                    <div class="category-content" id="surveying" style="display: none;">
+                        <div class="service-section-title">工程测量</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📐</div>
+                                <div class="service-title">工程测量</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🗺️</div>
+                                <div class="service-title">地形测绘</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📏</div>
+                                <div class="service-title">精密测量</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🎯</div>
+                                <div class="service-title">定位服务</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 环境监测内容 -->
+                    <div class="category-content" id="environmental" style="display: none;">
+                        <div class="service-section-title">环境监测</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🌱</div>
+                                <div class="service-title">环境检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🌿</div>
+                                <div class="service-title">污染监测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🌍</div>
+                                <div class="service-title">环境影响评估</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📊</div>
+                                <div class="service-title">环境报告</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 电力检测内容 -->
+                    <div class="category-content" id="electrical" style="display: none;">
+                        <div class="service-section-title">电力检测</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">⚡</div>
+                                <div class="service-title">电力安全检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔌</div>
+                                <div class="service-title">设备检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔋</div>
+                                <div class="service-title">电力系统检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">⚙️</div>
+                                <div class="service-title">设备维护</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 水质检测内容 -->
+                    <div class="category-content" id="water" style="display: none;">
+                        <div class="service-section-title">水质检测</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">💧</div>
+                                <div class="service-title">水质分析</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🧪</div>
+                                <div class="service-title">污染检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🌊</div>
+                                <div class="service-title">水源检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📋</div>
+                                <div class="service-title">检测报告</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 建筑检测内容 -->
+                    <div class="category-content" id="building" style="display: none;">
+                        <div class="service-section-title">建筑检测</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🏢</div>
+                                <div class="service-title">建筑结构检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🧱</div>
+                                <div class="service-title">材料检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔧</div>
+                                <div class="service-title">安全检测</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📋</div>
+                                <div class="service-title">检测报告</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 安全评估内容 -->
+                    <div class="category-content" id="safety" style="display: none;">
+                        <div class="service-section-title">安全评估</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🛡️</div>
+                                <div class="service-title">安全评估</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">⚠️</div>
+                                <div class="service-title">风险评估</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔍</div>
+                                <div class="service-title">安全检查</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📊</div>
+                                <div class="service-title">评估报告</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 其他服务内容 -->
+                    <div class="category-content" id="other" style="display: none;">
+                        <div class="service-section-title">其他服务</div>
+                        <div class="service-grid">
+                            <a href="#" class="service-item">
+                                <div class="service-icon">🔧</div>
+                                <div class="service-title">技术咨询</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📋</div>
+                                <div class="service-title">方案设计</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">💼</div>
+                                <div class="service-title">项目管理</div>
+                            </a>
+                            <a href="#" class="service-item">
+                                <div class="service-icon">📞</div>
+                                <div class="service-title">定制服务</div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 悬浮客服横幅 -->
+    <div class="customer-service-banner">
+        <div class="banner-content">
+            <div class="banner-text">没有找到想要的项目? 可以联系客服哟~</div>
+        </div>
+        <button class="banner-button">联系客服 ></button>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tabbar">
+        <a href="home.html" class="tabbar-item">
+            <div class="tabbar-icon">🏠</div>
+            <div>首页</div>
+        </a>
+        <a href="project-categories.html" class="tabbar-item active">
+            <div class="tabbar-icon">📂</div>
+            <div>分类</div>
+        </a>
+        <a href="messages.html" class="tabbar-item">
+            <div class="tabbar-icon">💬</div>
+            <div>消息</div>
+        </a>
+        <a href="profile.html" class="tabbar-item">
+            <div class="tabbar-icon">👤</div>
+            <div>我的</div>
+        </a>
+    </div>
+
+    <style>
+        /* 底部导航栏优化 */
+        .tabbar {
+            background: white;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tabbar-item.active {
+            color: #FF6B35;
+        }
+        
+        .tabbar-item.active .tabbar-icon {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <script>
+        // 鼠标悬停交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryItems = document.querySelectorAll('.category-nav-item');
+            const categoryContents = document.querySelectorAll('.category-content');
+            let currentTimeout = null;
+
+            categoryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    // 清除之前的定时器
+                    if (currentTimeout) {
+                        clearTimeout(currentTimeout);
+                        currentTimeout = null;
+                    }
+
+                    // 移除所有active类
+                    categoryItems.forEach(navItem => navItem.classList.remove('active'));
+                    
+                    // 隐藏所有内容
+                    categoryContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // 显示对应的内容
+                    const category = this.getAttribute('data-category');
+                    const targetContent = document.getElementById(category);
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                        this.classList.add('active');
+                    }
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    // 设置延迟隐藏，避免鼠标快速移动时闪烁
+                    currentTimeout = setTimeout(() => {
+                        // 如果不是当前激活项，则隐藏内容
+                        if (!this.classList.contains('active')) {
+                            const category = this.getAttribute('data-category');
+                            const targetContent = document.getElementById(category);
+                            if (targetContent) {
+                                targetContent.style.display = 'none';
+                            }
+                        }
+                    }, 100);
+                });
+            });
+
+            // 鼠标离开整个导航区域时，恢复默认状态
+            const categoryNav = document.querySelector('.category-nav');
+            categoryNav.addEventListener('mouseleave', function() {
+                if (currentTimeout) {
+                    clearTimeout(currentTimeout);
+                    currentTimeout = null;
+                }
+                
+                // 恢复默认状态（显示地下管线内容）
+                categoryItems.forEach(navItem => navItem.classList.remove('active'));
+                categoryContents.forEach(content => content.style.display = 'none');
+                
+                // 显示默认内容
+                document.getElementById('underground').style.display = 'block';
+                document.querySelector('[data-category="underground"]').classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

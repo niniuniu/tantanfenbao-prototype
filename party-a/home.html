@@ -3,91 +3,596 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>甲方首页 - 探测分包撮合平台</title>
+  <title>发包 - 探测分包撮合平台</title>
   <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* 自定义样式覆盖 */
+    body {
+      background: #F8FAFC;
+    }
+    
+    /* 欢迎标题行布局 */
+    .welcome-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    /* 内联角色切换按钮 */
+    .role-switch-inline {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .role-switch-inline:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    
+    .role-switch-inline:active {
+      transform: translateY(0);
+    }
+    
+    /* 顶部渐变头部 */
+    .header-gradient {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #60A5FA 100%);
+      padding: 12px 16px 16px;
+      margin: -16px -16px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .welcome-title {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .welcome-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .search-container {
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+    
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      font-size: 14px;
+      margin-left: 8px;
+    }
+    
+    .search-input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .search-icon {
+      color: rgba(255,255,255,0.8);
+      font-size: 16px;
+    }
+    
+    /* 服务分类网格 */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 4px 8px;
+      margin-bottom: 4px;
+    }
+    
+    .service-item {
+      background: white;
+      border-radius: 10px;
+      padding: 4px 2px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s;
+    }
+    
+    .service-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 2px;
+      border: 1px solid #E2E8F0;
+      color: #1E3A8A;
+    }
+    
+    .service-text {
+      font-size: 11px;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    /* 筛选标签 */
+    .filter-tabs {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      margin-bottom: 4px;
+      overflow-x: hidden;
+      flex-wrap: nowrap;
+    }
+    
+    .filter-tab {
+      font-size: 10px;
+      padding: 4px 8px;
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      color: #666;
+      text-decoration: none;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+      margin: 0 2px;
+      transition: all 0.3s;
+    }
+    
+    .filter-tab.active {
+      background: #1E3A8A;
+      color: white;
+      border-color: #1E3A8A;
+    }
+    
+    /* 电话预约区域 */
+    .phone-appointment {
+      background: white;
+      border-radius: 12px;
+      margin: 0 16px 4px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .phone-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .phone-title h3 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+    
+    .phone-subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-left: 12px;
+    }
+    
+    .phone-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    
+    .phone-btn {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .phone-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(30,58,138,0.3);
+    }
+    
+    /* 热门项目 */
+    .hot-projects {
+      background: white;
+      border-radius: 12px;
+      margin: 0 16px 8px;
+      padding: 16px 16px 8px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .featured-project {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 8px 0;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-project::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .project-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .project-info {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      white-space: nowrap;
+    }
+    
+    .project-budget {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    
+    .project-btn {
+      background: rgba(255,255,255,0.9);
+      color: #1E3A8A;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .project-btn:hover {
+      background: white;
+      transform: translateY(-1px);
+    }
+    
+    /* 更多项目 */
+    .more-projects {
+      background: white;
+      border-radius: 12px;
+      margin: 0 16px 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .hot-service-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s;
+    }
+    
+    .hot-service-item:hover {
+      background: #E2E8F0;
+      transform: translateY(-1px);
+    }
+    
+    .hot-service-icon {
+      width: 50px;
+      height: 50px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-right: 12px;
+      border: 1px solid #E2E8F0;
+      color: #1E3A8A;
+    }
+    
+    .hot-service-content {
+      flex: 1;
+    }
+    
+    .hot-service-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    
+    .hot-service-desc {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    
+    .hot-service-price {
+      font-size: 12px;
+      color: #1E3A8A;
+      font-weight: bold;
+    }
+    
+    .hot-service-btn {
+      background: #1E3A8A;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .hot-service-btn:hover {
+      background: #3B82F6;
+      transform: translateY(-1px);
+    }
+    
+    /* 平台标语 */
+    .platform-slogan {
+      text-align: center;
+      padding: 16px;
+      color: #666;
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
-  <!-- 顶部导航栏 -->
-  <div class="navbar">
-    <div class="navbar-back" onclick="window.location.href='../index.html'">←</div>
-    <div class="navbar-title">探测分包撮合平台</div>
-    <div class="navbar-action" onclick="window.location.href='../common/messages.html'">🔔 <span class="badge">3</span></div>
-  </div>
-
   <!-- 页面内容 -->
   <div class="page">
     <div class="page-content">
-      <!-- 欢迎区域 -->
-      <div class="welcome-section">
-        <div class="welcome-text">👋 您好，XX建设集团</div>
-        <div class="welcome-stats">当前进行中的项目：5个</div>
+      <!-- 顶部渐变头部 -->
+      <div class="header-gradient">
+        <div class="header-content">
+          <div class="welcome-header">
+            <div class="welcome-title">欢迎，张总</div>
+            <button class="role-switch-inline" onclick="switchToContractor()">
+              <span>👷</span>
+              <span>切换到包工头</span>
+            </button>
+          </div>
+          <div class="welcome-subtitle">发布项目，寻找专业包工头</div>
+          <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="搜索项目类型或包工头...">
+          </div>
+        </div>
       </div>
 
-      <!-- 快捷入口 -->
-      <div class="grid-menu">
-        <a href="publish-need.html" class="grid-item">
-          <div class="grid-icon">📝</div>
-          <div class="grid-text">发布需求</div>
+      <!-- 服务分类网格 -->
+      <div class="service-grid">
+        <a href="#" class="service-item">
+          <div class="service-icon">🏗️</div>
+          <div class="service-text">发布项目</div>
         </a>
-        <a href="statistics.html" class="grid-item">
-          <div class="grid-icon">📊</div>
-          <div class="grid-text">统计报表</div>
+        <a href="#" class="service-item">
+          <div class="service-icon">👥</div>
+          <div class="service-text">包工头</div>
         </a>
-        <a href="bid-management.html" class="grid-item">
-          <div class="grid-icon">⚖️</div>
-          <div class="grid-text">开标管理</div>
+        <a href="#" class="service-item">
+          <div class="service-icon">📋</div>
+          <div class="service-text">我的项目</div>
         </a>
-        <a href="acceptance.html" class="grid-item">
-          <div class="grid-icon">✅</div>
-          <div class="grid-text">验收管理</div>
+        <a href="#" class="service-item">
+          <div class="service-icon">💰</div>
+          <div class="service-text">资金管理</div>
+        </a>
+        <a href="#" class="service-item">
+          <div class="service-icon">📊</div>
+          <div class="service-text">数据分析</div>
+        </a>
+        <a href="#" class="service-item">
+          <div class="service-icon">📞</div>
+          <div class="service-text">客服支持</div>
+        </a>
+        <a href="#" class="service-item">
+          <div class="service-icon">📜</div>
+          <div class="service-text">合同管理</div>
+        </a>
+        <a href="#" class="service-item">
+          <div class="service-icon">⚙️</div>
+          <div class="service-text">更多</div>
         </a>
       </div>
 
-      <!-- 进行中的项目 -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">📋 进行中的项目</div>
-          <a href="my-needs.html" class="card-extra" style="text-decoration: none; color: var(--primary-color);">查看全部 ›</a>
-        </div>
+      <!-- 筛选标签 -->
+      <div class="filter-tabs">
+        <a href="#" class="filter-tab active">全部</a>
+        <a href="#" class="filter-tab">急招</a>
+        <a href="#" class="filter-tab">高预算</a>
+        <a href="#" class="filter-tab">长期合作</a>
+        <a href="#" class="filter-tab">政府项目</a>
+        <a href="#" class="filter-tab">就近项目</a>
+      </div>
 
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-name">XX地下管线探测项目</div>
-            <div class="status-dot pending"></div>
-          </div>
-          <div class="project-info">地点：XX市XX区 | 预算：50万</div>
-          <div class="project-info">状态：投标中 | 投标数：8</div>
-          <div class="project-info">截止时间：2025-10-20</div>
-          <div class="project-actions">
-            <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
-            <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
-          </div>
+      <!-- 电话预约区域 -->
+      <div class="phone-appointment">
+        <div class="phone-title">
+          <h3>电话预约</h3>
+          <span class="phone-subtitle">人工在线·贴心便捷</span>
         </div>
+        <div class="phone-desc">需要专业咨询？我们的专家团队随时为您服务</div>
+        <button class="phone-btn">立即联系 专属顾问</button>
+      </div>
 
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-name">XX地质勘察项目</div>
-            <div class="status-dot progress"></div>
-          </div>
-          <div class="project-info">中标方：XX探测公司</div>
-          <div class="project-info">合同金额：45万 | 进度：60%</div>
-          <div class="project-actions">
-            <a href="project-progress.html" class="btn btn-small btn-secondary" style="flex: 1;">查看进度</a>
-            <a href="acceptance-detail.html" class="btn btn-small btn-primary">验收</a>
+      <!-- 热门项目 -->
+      <div class="hot-projects">
+        <div class="section-title">推荐包工头</div>
+        
+        <div class="featured-project">
+          <div class="project-content">
+            <div class="project-title">北京地铁15号线地下管线探测</div>
+            <div class="project-info">政府项目 | 距离8km | 剩余3天</div>
+            <div class="project-budget">预算：280万</div>
+            <button class="project-btn">立即发包</button>
           </div>
         </div>
+        
+        <div class="featured-project">
+          <div class="project-content">
+            <div class="project-title">雄安新区地质勘察与监测</div>
+            <div class="project-info">国家项目 | 距离15km | 剩余7天</div>
+            <div class="project-budget">预算：450万</div>
+            <button class="project-btn">立即发包</button>
+          </div>
+        </div>
+      </div>
 
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-name">XX探测项目</div>
-            <div class="status-dot completed"></div>
+      <!-- 更多项目 -->
+      <div class="more-projects">
+        <div class="section-title">更多项目</div>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">🏗️</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">地下管线探测项目</div>
+            <div class="hot-service-desc">专业管线探测，精准定位</div>
+            <div class="hot-service-price">预算：120万</div>
           </div>
-          <div class="project-info">完成时间：2025-09-15</div>
-          <div class="project-info">评价：⭐⭐⭐⭐⭐</div>
-          <div class="project-actions">
-            <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">🔍</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">地质勘察项目</div>
+            <div class="hot-service-desc">地质调查，安全评估</div>
+            <div class="hot-service-price">预算：80万</div>
           </div>
-        </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">📐</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">工程测量项目</div>
+            <div class="hot-service-desc">精准测量，专业测绘</div>
+            <div class="hot-service-price">预算：35万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">🌍</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">环境监测项目</div>
+            <div class="hot-service-desc">环保检测，污染监测</div>
+            <div class="hot-service-price">预算：28万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">⚡</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">电力检测项目</div>
+            <div class="hot-service-desc">电力安全，设备检测</div>
+            <div class="hot-service-price">预算：45万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">💧</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">水质检测项目</div>
+            <div class="hot-service-desc">水质分析，污染监测</div>
+            <div class="hot-service-price">预算：18万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">🏢</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">建筑检测项目</div>
+            <div class="hot-service-desc">结构检测，安全评估</div>
+            <div class="hot-service-price">预算：65万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+        
+        <a href="#" class="hot-service-item">
+          <div class="hot-service-icon">🛡️</div>
+          <div class="hot-service-content">
+            <div class="hot-service-title">安全评估项目</div>
+            <div class="hot-service-desc">风险评估，安全检查</div>
+            <div class="hot-service-price">预算：32万</div>
+          </div>
+          <button class="hot-service-btn">发包</button>
+        </a>
+      </div>
+
+      <!-- 平台标语 -->
+      <div class="platform-slogan">
+        探测分包撮合平台，您信赖的平台
       </div>
     </div>
   </div>
@@ -98,11 +603,11 @@
       <div class="tabbar-icon">🏠</div>
       <div>首页</div>
     </a>
-    <a href="my-needs.html" class="tabbar-item">
-      <div class="tabbar-icon">📋</div>
-      <div>我的需求</div>
+    <a href="project-categories.html" class="tabbar-item">
+      <div class="tabbar-icon">📂</div>
+      <div>分类</div>
     </a>
-    <a href="../common/messages.html" class="tabbar-item">
+    <a href="messages.html" class="tabbar-item">
       <div class="tabbar-icon">💬</div>
       <div>消息</div>
     </a>
@@ -111,6 +616,36 @@
       <div>我的</div>
     </a>
   </div>
+
+  <style>
+    /* 底部导航栏优化 */
+    .tabbar {
+      background: white;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tabbar-item.active {
+      color: #1E3A8A;
+    }
+    
+    .tabbar-item.active .tabbar-icon {
+      transform: scale(1.1);
+    }
+  </style>
+
+  <script>
+    // 角色切换函数
+    function switchToContractor() {
+      // 保存用户选择为乙方
+      localStorage.setItem('userRole', 'contractor');
+      // 跳转到乙方首页
+      window.location.href = '../party-b/home.html';
+    }
+
+    // 页面加载时保存当前角色
+    window.addEventListener('DOMContentLoaded', function() {
+      localStorage.setItem('userRole', 'client');
+    });
+  </script>
 </body>
 </html>
-

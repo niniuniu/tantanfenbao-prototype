@@ -3,96 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>我的需求 - 探测分包撮合平台</title>
+  <title>我的项目 - 探测分包撮合平台</title>
   <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* 自定义样式覆盖 */
+    body {
+      background: #F8FAFC;
+    }
+    
+    /* 页面头部 */
+    .page-header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #60A5FA 100%);
+      color: white;
+      padding: 12px 16px;
+      margin: -16px -16px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .page-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* 统计卡片 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .stat-number {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1E3A8A;
+      margin-bottom: 1px;
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      color: #666;
+    }
+    
+    /* 筛选标签 */
+    .filter-tabs {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      margin-bottom: 4px;
+      background: white;
+      border-radius: 10px;
+    }
+    
+    .filter-tab {
+      font-size: 12px;
+      padding: 6px 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      color: #666;
+      cursor: pointer;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+      margin: 0 2px;
+      transition: all 0.3s;
+    }
+    
+    .filter-tab.active {
+      background: #1E3A8A;
+      color: white;
+      border-color: #1E3A8A;
+    }
+    
+    /* 项目列表 */
+    .project-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    
+    .project-status {
+      padding: 4px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+    
+    .status-bidding {
+      background: #FEF3E7;
+      color: #FF6B35;
+    }
+    
+    .status-progress {
+      background: #E3F2FD;
+      color: #1976D2;
+    }
+    
+    .status-completed {
+      background: #E8F5E8;
+      color: #4CAF50;
+    }
+    
+    .project-meta {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    
+    .project-budget {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1E3A8A;
+      margin-bottom: 8px;
+    }
+    
+    .project-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .action-btn {
+      flex: 1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #1E3A8A;
+      color: white;
+      border: none;
+    }
+    
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #64748B;
+      border: 1px solid #E2E8F0;
+    }
+  </style>
 </head>
 <body>
-  <!-- 顶部导航栏 -->
-  <div class="navbar">
-    <div class="navbar-back" onclick="history.back()">←</div>
-    <div class="navbar-title">我的需求</div>
-    <div class="navbar-action" onclick="window.location.href='publish-need.html'">+ 发布新需求</div>
-  </div>
-
   <!-- 页面内容 -->
   <div class="page">
-    <!-- 筛选标签 -->
-    <div class="filter-tabs">
-      <button class="filter-tab active">全部</button>
-      <button class="filter-tab">投标中</button>
-      <button class="filter-tab">已开标</button>
-      <button class="filter-tab">进行中</button>
-      <button class="filter-tab">已完成</button>
-      <button class="filter-tab">已取消</button>
-    </div>
+    <div class="page-content">
+      <!-- 页面头部 -->
+      <div class="page-header">
+        <div class="page-title">我的项目</div>
+        <div class="page-subtitle">管理您发布的项目和投标</div>
+      </div>
 
-    <div class="page-content" style="padding-top: 0;">
-      <!-- 投标中的项目 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-name">XX地下管线探测项目</div>
-          <div class="status-dot pending"></div>
+      <!-- 统计卡片 -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">5</div>
+          <div class="stat-label">招标中</div>
         </div>
-        <div class="project-info">预算：50万 | 投标数：8</div>
-        <div class="project-info">投标截止：2025-10-20</div>
-        <div class="project-actions">
-          <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
-          <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
-          <button class="btn btn-small btn-text" style="color: var(--error-color);">取消</button>
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">进行中</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label">已完成</div>
         </div>
       </div>
 
-      <!-- 进行中的项目 -->
-      <div class="project-card">
+      <!-- 筛选标签 -->
+      <div class="filter-tabs">
+        <button class="filter-tab active">全部</button>
+        <button class="filter-tab">招标中</button>
+        <button class="filter-tab">进行中</button>
+        <button class="filter-tab">已完成</button>
+      </div>
+
+      <!-- 项目列表 -->
+      <div class="project-item">
         <div class="project-header">
-          <div class="project-name">XX地质勘察项目</div>
-          <div class="status-dot progress"></div>
+          <div>
+            <div class="project-title">北京地铁15号线地下管线探测</div>
+            <div class="project-meta">发布时间：2024-01-15</div>
+          </div>
+          <div class="project-status status-bidding">招标中</div>
         </div>
-        <div class="project-info">中标方：XX探测公司</div>
-        <div class="project-info">合同金额：45万 | 进度：60%</div>
+        <div class="project-budget">预算：280万</div>
+        <div class="project-meta">投标数：12家 | 剩余：2天</div>
         <div class="project-actions">
-          <a href="project-detail.html" class="btn btn-small btn-secondary" style="flex: 1;">查看详情</a>
-          <a href="project-progress.html" class="btn btn-small btn-secondary">查看进度</a>
-          <a href="acceptance-detail.html" class="btn btn-small btn-primary">验收</a>
+          <a href="bid-list.html" class="action-btn btn-primary">查看投标</a>
+          <button class="action-btn btn-secondary">修改项目</button>
         </div>
       </div>
 
-      <!-- 已完成的项目 -->
-      <div class="project-card">
+      <div class="project-item">
         <div class="project-header">
-          <div class="project-name">XX项目</div>
-          <div class="status-dot completed"></div>
+          <div>
+            <div class="project-title">雄安新区地质勘察与监测</div>
+            <div class="project-meta">开始时间：2024-01-10</div>
+          </div>
+          <div class="project-status status-progress">进行中</div>
         </div>
-        <div class="project-info">完成时间：2025-09-15</div>
-        <div class="project-info">评价：⭐⭐⭐⭐⭐</div>
+        <div class="project-budget">合同金额：450万</div>
+        <div class="project-meta">包工头：李师傅 | 进度：60%</div>
         <div class="project-actions">
-          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
+          <a href="project-progress.html" class="action-btn btn-primary">查看进度</a>
+          <button class="action-btn btn-secondary">联系包工头</button>
         </div>
       </div>
 
-      <!-- 更多项目 -->
-      <div class="project-card">
+      <div class="project-item">
         <div class="project-header">
-          <div class="project-name">XX测绘项目</div>
-          <div class="status-dot completed"></div>
+          <div>
+            <div class="project-title">工程测量项目</div>
+            <div class="project-meta">完成时间：2024-01-05</div>
+          </div>
+          <div class="project-status status-completed">已完成</div>
         </div>
-        <div class="project-info">完成时间：2025-08-20</div>
-        <div class="project-info">评价：⭐⭐⭐⭐</div>
+        <div class="project-budget">结算金额：35万</div>
+        <div class="project-meta">包工头：王师傅 | 评分：⭐⭐⭐⭐⭐</div>
         <div class="project-actions">
-          <a href="project-detail.html" class="btn btn-small btn-text" style="flex: 1;">查看详情</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-name">XX探测项目</div>
-          <div class="status-dot pending"></div>
-        </div>
-        <div class="project-info">预算：30万 | 投标数：5</div>
-        <div class="project-info">投标截止：2025-10-25</div>
-        <div class="project-actions">
-          <a href="bid-list.html" class="btn btn-small btn-primary" style="flex: 1;">查看投标</a>
-          <a href="publish-need.html" class="btn btn-small btn-secondary">修改需求</a>
+          <a href="project-detail.html" class="action-btn btn-primary">查看详情</a>
+          <button class="action-btn btn-secondary">再次合作</button>
         </div>
       </div>
     </div>
@@ -104,11 +284,11 @@
       <div class="tabbar-icon">🏠</div>
       <div>首页</div>
     </a>
-    <a href="my-needs.html" class="tabbar-item active">
-      <div class="tabbar-icon">📋</div>
-      <div>我的需求</div>
+    <a href="project-categories.html" class="tabbar-item">
+      <div class="tabbar-icon">📂</div>
+      <div>分类</div>
     </a>
-    <a href="../common/messages.html" class="tabbar-item">
+    <a href="messages.html" class="tabbar-item">
       <div class="tabbar-icon">💬</div>
       <div>消息</div>
     </a>
@@ -117,6 +297,21 @@
       <div>我的</div>
     </a>
   </div>
+
+  <style>
+    /* 底部导航栏优化 */
+    .tabbar {
+      background: white;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tabbar-item.active {
+      color: #1E3A8A;
+    }
+    
+    .tabbar-item.active .tabbar-icon {
+      transform: scale(1.1);
+    }
+  </style>
 </body>
 </html>
-

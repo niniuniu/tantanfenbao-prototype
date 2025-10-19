@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>包工头库 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* 自定义样式覆盖 */
+    body {
+      background: #F8FAFC;
+    }
+    
+    /* 页面头部 */
+    .page-header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #60A5FA 100%);
+      color: white;
+      padding: 12px 16px;
+      margin: -16px -16px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .page-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 12px;
+    }
+    
+    .search-container {
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      font-size: 14px;
+      margin-left: 8px;
+    }
+    
+    .search-input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .search-icon {
+      color: rgba(255,255,255,0.8);
+      font-size: 16px;
+    }
+    
+    /* 筛选标签 */
+    .filter-tabs {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      background: white;
+      border-radius: 10px;
+    }
+    
+    .filter-tab {
+      font-size: 12px;
+      padding: 6px 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      color: #666;
+      cursor: pointer;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+      margin: 0 2px;
+      transition: all 0.3s;
+    }
+    
+    .filter-tab.active {
+      background: #1E3A8A;
+      color: white;
+      border-color: #1E3A8A;
+    }
+    
+    /* 包工头卡片 */
+    .contractor-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    
+    .contractor-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    
+    .contractor-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .contractor-avatar {
+      width: 50px;
+      height: 50px;
+      background: #F8FAFC;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-right: 12px;
+      border: 1px solid #E2E8F0;
+    }
+    
+    .contractor-info {
+      flex: 1;
+    }
+    
+    .contractor-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 2px;
+    }
+    
+    .contractor-level {
+      background: #FEF3E7;
+      color: #FF6B35;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-right: 4px;
+    }
+    
+    .contractor-rating {
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .contractor-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    
+    .skill-tag {
+      background: #F8FAFC;
+      color: #666;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+    }
+    
+    .contractor-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1E3A8A;
+    }
+    
+    .stat-text {
+      font-size: 11px;
+      color: #666;
+    }
+    
+    .contractor-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .action-btn {
+      flex: 1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #1E3A8A;
+      color: white;
+      border: none;
+    }
+    
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #64748B;
+      border: 1px solid #E2E8F0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 页面内容 -->
+  <div class="page">
+    <div class="page-content">
+      <!-- 页面头部 -->
+      <div class="page-header">
+        <div class="page-title">包工头库</div>
+        <div class="page-subtitle">寻找专业的探测包工头</div>
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" class="search-input" placeholder="搜索包工头姓名或技能...">
+        </div>
+      </div>
+
+      <!-- 筛选标签 -->
+      <div class="filter-tabs">
+        <button class="filter-tab active">全部</button>
+        <button class="filter-tab">金牌</button>
+        <button class="filter-tab">高评分</button>
+        <button class="filter-tab">就近</button>
+      </div>
+
+      <!-- 包工头列表 -->
+      <div class="contractor-item">
+        <div class="contractor-header">
+          <div class="contractor-avatar">👷</div>
+          <div class="contractor-info">
+            <div class="contractor-name">张师傅</div>
+            <div>
+              <span class="contractor-level">金牌包工头</span>
+              <span class="contractor-rating">⭐⭐⭐⭐⭐ 4.9</span>
+            </div>
+          </div>
+        </div>
+        <div class="contractor-skills">
+          <span class="skill-tag">地下管线探测</span>
+          <span class="skill-tag">地质勘察</span>
+          <span class="skill-tag">3年经验</span>
+        </div>
+        <div class="contractor-stats">
+          <div class="stat-item">
+            <div class="stat-value">23</div>
+            <div class="stat-text">完成项目</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">98%</div>
+            <div class="stat-text">按时完成</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">5km</div>
+            <div class="stat-text">距离</div>
+          </div>
+        </div>
+        <div class="contractor-actions">
+          <a href="contractor-detail.html" class="action-btn btn-primary">查看详情</a>
+          <button class="action-btn btn-secondary">邀请投标</button>
+        </div>
+      </div>
+
+      <div class="contractor-item">
+        <div class="contractor-header">
+          <div class="contractor-avatar">👷</div>
+          <div class="contractor-info">
+            <div class="contractor-name">李师傅</div>
+            <div>
+              <span class="contractor-level">金牌包工头</span>
+              <span class="contractor-rating">⭐⭐⭐⭐⭐ 4.8</span>
+            </div>
+          </div>
+        </div>
+        <div class="contractor-skills">
+          <span class="skill-tag">地质勘察</span>
+          <span class="skill-tag">工程测量</span>
+          <span class="skill-tag">5年经验</span>
+        </div>
+        <div class="contractor-stats">
+          <div class="stat-item">
+            <div class="stat-value">35</div>
+            <div class="stat-text">完成项目</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">95%</div>
+            <div class="stat-text">按时完成</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">8km</div>
+            <div class="stat-text">距离</div>
+          </div>
+        </div>
+        <div class="contractor-actions">
+          <a href="contractor-detail.html" class="action-btn btn-primary">查看详情</a>
+          <button class="action-btn btn-secondary">邀请投标</button>
+        </div>
+      </div>
+
+      <div class="contractor-item">
+        <div class="contractor-header">
+          <div class="contractor-avatar">👷</div>
+          <div class="contractor-info">
+            <div class="contractor-name">王师傅</div>
+            <div>
+              <span class="contractor-level">银牌包工头</span>
+              <span class="contractor-rating">⭐⭐⭐⭐ 4.6</span>
+            </div>
+          </div>
+        </div>
+        <div class="contractor-skills">
+          <span class="skill-tag">环境监测</span>
+          <span class="skill-tag">电力检测</span>
+          <span class="skill-tag">2年经验</span>
+        </div>
+        <div class="contractor-stats">
+          <div class="stat-item">
+            <div class="stat-value">15</div>
+            <div class="stat-text">完成项目</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">92%</div>
+            <div class="stat-text">按时完成</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">12km</div>
+            <div class="stat-text">距离</div>
+          </div>
+        </div>
+        <div class="contractor-actions">
+          <a href="contractor-detail.html" class="action-btn btn-primary">查看详情</a>
+          <button class="action-btn btn-secondary">邀请投标</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="project-categories.html" class="tabbar-item">
+      <div class="tabbar-icon">📂</div>
+      <div>分类</div>
+    </a>
+    <a href="messages.html" class="tabbar-item">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+    <a href="profile.html" class="tabbar-item">
+      <div class="tabbar-icon">👤</div>
+      <div>我的</div>
+    </a>
+  </div>
+
+  <style>
+    /* 底部导航栏优化 */
+    .tabbar {
+      background: white;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tabbar-item.active {
+      color: #1E3A8A;
+    }
+    
+    .tabbar-item.active .tabbar-icon {
+      transform: scale(1.1);
+    }
+  </style>
+</body>
+</html>

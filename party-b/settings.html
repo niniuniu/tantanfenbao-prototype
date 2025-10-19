@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>设置 - 探测分包撮合平台</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        /* 自定义样式覆盖 */
+        body {
+            background: #F8FAFC;
+        }
+        
+        /* 页面标题 */
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 16px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        /* 功能菜单 */
+        .menu-section {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .menu-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            padding: 12px 16px 6px;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #F1F5F9;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item:hover {
+            background: #F8FAFC;
+        }
+        
+        .menu-icon {
+            width: 32px;
+            height: 32px;
+            background: #F8FAFC;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .menu-content {
+            flex: 1;
+        }
+        
+        .menu-title-text {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .menu-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .menu-arrow {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .menu-badge {
+            background: #FF4757;
+            color: white;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 6px;
+            margin-left: 6px;
+        }
+        
+        /* 退出登录 */
+        .logout-section {
+            padding: 20px 16px;
+            text-align: center;
+        }
+        
+        .logout-btn {
+            background: #FF4757;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .logout-btn:hover {
+            background: #FF3742;
+            transform: translateY(-1px);
+        }
+        
+        /* 开关样式 */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #FF6B35;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面标题 -->
+    <div class="page-title">
+        <a href="profile.html" style="position: absolute; left: 16px; color: #333; text-decoration: none;">←</a>
+        <span style="margin-right: 6px;">⚙️</span>设置
+    </div>
+
+    <!-- 页面内容 -->
+    <div class="page">
+        <div class="page-content" style="padding-top: 0;">
+            <!-- 设置选项 -->
+            <div class="menu-section">
+                <div class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">推送通知</div>
+                        <div class="menu-desc">接收项目消息和系统通知</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">短信通知</div>
+                        <div class="menu-desc">重要消息通过短信提醒</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">邮件通知</div>
+                        <div class="menu-desc">接收邮件形式的通知</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <a href="privacy.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">隐私政策</div>
+                        <div class="menu-desc">了解我们如何保护您的隐私</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="security.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">账户安全</div>
+                        <div class="menu-desc">修改密码和安全设置</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="data.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">数据管理</div>
+                        <div class="menu-desc">导出或删除您的数据</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="help.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">帮助中心</div>
+                        <div class="menu-desc">常见问题和使用指南</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="contact.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">联系客服</div>
+                        <div class="menu-desc">在线客服和技术支持</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="feedback.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">意见反馈</div>
+                        <div class="menu-desc">提交您的建议和问题</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="about.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">关于我们</div>
+                        <div class="menu-desc">平台介绍和版本信息</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="version.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">检查更新</div>
+                        <div class="menu-desc">当前版本 v1.0.0</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+                <a href="terms.html" class="menu-item">
+                    <div class="menu-content">
+                        <div class="menu-title-text">服务条款</div>
+                        <div class="menu-desc">用户协议和使用条款</div>
+                    </div>
+                    <div class="menu-arrow">></div>
+                </a>
+            </div>
+
+            <!-- 退出登录 -->
+            <div class="logout-section">
+                <button class="logout-btn" onclick="if(confirm('确定要退出登录吗？')) { alert('退出登录功能开发中...'); }">
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tabbar">
+        <a href="home.html" class="tabbar-item">
+            <div class="tabbar-icon">🏠</div>
+            <div>首页</div>
+        </a>
+        <a href="project-categories.html" class="tabbar-item">
+            <div class="tabbar-icon">📂</div>
+            <div>分类</div>
+        </a>
+    <a href="messages.html" class="tabbar-item">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+        <a href="profile.html" class="tabbar-item active">
+            <div class="tabbar-icon">👤</div>
+            <div>我的</div>
+        </a>
+    </div>
+
+    <style>
+        /* 底部导航栏优化 */
+        .tabbar {
+            background: white;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tabbar-item.active {
+            color: #FF6B35;
+        }
+        
+        .tabbar-item.active .tabbar-icon {
+            transform: scale(1.1);
+        }
+    </style>
+</body>
+</html>

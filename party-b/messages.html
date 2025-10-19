@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>消息中心 - 探测分包撮合平台</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="navbar">
+    <div class="navbar-back" onclick="history.back()">←</div>
+    <div class="navbar-title">消息中心</div>
+    <div class="navbar-action"></div>
+  </div>
+
+  <!-- 页面内容 -->
+  <div class="page">
+    <!-- 筛选标签 -->
+    <div class="filter-tabs">
+      <button class="filter-tab active">全部</button>
+      <button class="filter-tab">系统通知</button>
+      <button class="filter-tab">项目消息</button>
+      <button class="filter-tab">私信</button>
+    </div>
+
+    <div class="page-content" style="padding-top: 4px; padding-bottom: 80px;">
+      <div class="section-title" style="margin-bottom: 4px;">今天</div>
+
+      <!-- 系统通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+            <div style="width: 8px; height: 8px; background: var(--primary-color); border-radius: 50%; flex-shrink: 0;"></div>
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">系统通知</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">14:35</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">您有新的探测项目推荐，适合您的技能</div>
+      </a>
+
+      <!-- 私信 -->
+      <a href="chat.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+            <div style="width: 8px; height: 8px; background: var(--primary-color); border-radius: 50%; flex-shrink: 0;"></div>
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">张总</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">10:22</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">您好，想咨询一下这个项目的具体要求</div>
+      </a>
+
+      <div class="section-title" style="margin-bottom: 4px;">昨天</div>
+
+      <!-- 中标通知 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">🎉 系统通知</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">昨天 18:20</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">恭喜！您已成功中标"XX地下管线探测项目"</div>
+      </a>
+
+      <!-- 项目邀请 -->
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📨 项目邀请</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">昨天 15:40</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">您收到新项目邀请"北京地铁15号线地下管线探测"</div>
+      </a>
+
+      <div class="section-title" style="margin-bottom: 4px;">更早</div>
+
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="flex: 1; min-width: 0;">
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">系统通知</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">10-10</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">您的资质证书已通过平台审核</div>
+      </a>
+
+      <a href="chat.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="flex: 1; min-width: 0;">
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">李总</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">10-09</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">感谢您的配合，项目已顺利验收</div>
+      </a>
+
+      <a href="notification-detail.html" class="card" style="text-decoration: none; color: inherit; display: block; margin-bottom: 4px;">
+        <div class="flex-between" style="margin-bottom: 6px;">
+          <div style="flex: 1; min-width: 0;">
+            <div class="card-title" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">系统通知</div>
+          </div>
+          <div class="text-small" style="flex-shrink: 0; margin-left: 8px;">10-08</div>
+        </div>
+        <div class="project-info" style="word-wrap: break-word; overflow-wrap: break-word;">平台将于10月15日进行系统维护，预计2小时</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 底部导航栏 -->
+  <div class="tabbar">
+    <a href="home.html" class="tabbar-item">
+      <div class="tabbar-icon">🏠</div>
+      <div>首页</div>
+    </a>
+    <a href="project-categories.html" class="tabbar-item">
+      <div class="tabbar-icon">📂</div>
+      <div>分类</div>
+    </a>
+    <a href="messages.html" class="tabbar-item active">
+      <div class="tabbar-icon">💬</div>
+      <div>消息</div>
+    </a>
+    <a href="profile.html" class="tabbar-item">
+      <div class="tabbar-icon">👤</div>
+      <div>我的</div>
+    </a>
+  </div>
+</body>
+</html>
